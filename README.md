@@ -1,4 +1,4 @@
-# modern-admin-html-2.0
+# admin-html-2.0
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1
 
@@ -53,7 +53,7 @@ Semi Dark Vertical Menu Template
 Dark Nav Vertical Menu Template
 Light Vertical Menu Template
 
-Vertical Modern Menu Template
+Vertical Menu Template
 Vertical Overlay Menu Template
 Horizontal Menu Template
 Full Width Horizontal Menu Template

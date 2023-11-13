@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
         } else {
           if ((this.router.url === '/' || this.router.url === '/login' || this.router.url === '/register') &&
               !localStorage.getItem('remember')) {
-            this.title = 'Login with Background Image';
+            this.title = 'Login';
             this.titleService.setTitle(this.title + '' + this._themeSettingsConfig.defaultTitleSuffix);
             this.title = '';
           }
