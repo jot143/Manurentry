@@ -5,7 +5,7 @@
 		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 			<!-- Menu -->
 			{{child?child.title:''}}
-			<li *ngFor="let child of _menuSettingsConfig.vertical_menu.items" class="" [ngClass]="{
+			<li *ngFor="let child of _menuSettingsConfig.menu.items" class="" [ngClass]="{
             'has-sub': child.submenu,
             'open': child.isOpen && child.submenu,
             'nav-item': child.title,

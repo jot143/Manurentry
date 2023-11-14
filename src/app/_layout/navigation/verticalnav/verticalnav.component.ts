@@ -85,11 +85,11 @@ export class VerticalnavComponent implements OnInit {
     for (let i = 0; i < nodes.length; i++) {
       this.resetCollapseMenu(nodes[i]);
     }
-    for (let i = 0; i < this._menuSettingsConfig.vertical_menu.items.length; i++) {
-      this._menuSettingsConfig.vertical_menu.items[i]['isSelected'] = false;
-      this._menuSettingsConfig.vertical_menu.items[i]['hover'] = false;
-      this._menuSettingsConfig.vertical_menu.items[i]['isOpen'] = false;
-      this.resetSubmenuItems(this._menuSettingsConfig.vertical_menu.items[i]);
+    for (let i = 0; i < this._menuSettingsConfig.menu.items.length; i++) {
+      this._menuSettingsConfig.menu.items[i]['isSelected'] = false;
+      this._menuSettingsConfig.menu.items[i]['hover'] = false;
+      this._menuSettingsConfig.menu.items[i]['isOpen'] = false;
+      this.resetSubmenuItems(this._menuSettingsConfig.menu.items[i]);
     }
   }
 
@@ -133,31 +133,31 @@ export class VerticalnavComponent implements OnInit {
   }
 
   setActiveRouteInNavbar () {
-    for (let i = 0; i < this._menuSettingsConfig.vertical_menu.items.length; i++) {
-      if (!this._menuSettingsConfig.vertical_menu.items[i].submenu &&
-        this._menuSettingsConfig.vertical_menu.items[i].page === this.router.url) {
-        this._menuSettingsConfig.vertical_menu.items[i]['isSelected'] = true;
+    for (let i = 0; i < this._menuSettingsConfig.menu.items.length; i++) {
+      if (!this._menuSettingsConfig.menu.items[i].submenu &&
+        this._menuSettingsConfig.menu.items[i].page === this.router.url) {
+        this._menuSettingsConfig.menu.items[i]['isSelected'] = true;
         break;
-      } else if (this._menuSettingsConfig.vertical_menu.items[i].submenu) {
+      } else if (this._menuSettingsConfig.menu.items[i].submenu) {
         // Level 1 menu
-        for (let j = 0; j < this._menuSettingsConfig.vertical_menu.items[i].submenu.items.length; j++) {
-          if (!this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].submenu &&
-              this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].page === this.router.url) {
-              this._menuSettingsConfig.vertical_menu.items[i]['isSelected'] = true;
-              this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j]['isSelected'] = true;
-              this._menuSettingsConfig.vertical_menu.items[i].isOpen = true;
+        for (let j = 0; j < this._menuSettingsConfig.menu.items[i].submenu.items.length; j++) {
+          if (!this._menuSettingsConfig.menu.items[i].submenu.items[j].submenu &&
+              this._menuSettingsConfig.menu.items[i].submenu.items[j].page === this.router.url) {
+              this._menuSettingsConfig.menu.items[i]['isSelected'] = true;
+              this._menuSettingsConfig.menu.items[i].submenu.items[j]['isSelected'] = true;
+              this._menuSettingsConfig.menu.items[i].isOpen = true;
               break;
-          } else if (this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].submenu) {
+          } else if (this._menuSettingsConfig.menu.items[i].submenu.items[j].submenu) {
             // Level 2 menu
-            for (let k = 0; k < this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].submenu.items.length; k++) {
-              if (this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].submenu.items[k].page === this.router.url) {
-                this._menuSettingsConfig.vertical_menu.items[i]['isSelected'] = true;
-                this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j]['isSelected'] = true;
-                this._menuSettingsConfig.vertical_menu.items[i].isOpen = true;
+            for (let k = 0; k < this._menuSettingsConfig.menu.items[i].submenu.items[j].submenu.items.length; k++) {
+              if (this._menuSettingsConfig.menu.items[i].submenu.items[j].submenu.items[k].page === this.router.url) {
+                this._menuSettingsConfig.menu.items[i]['isSelected'] = true;
+                this._menuSettingsConfig.menu.items[i].submenu.items[j]['isSelected'] = true;
+                this._menuSettingsConfig.menu.items[i].isOpen = true;
 
-                this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j]['isSelected'] = true;
-                this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].submenu.items[k]['isSelected'] = true;
-                this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].isOpen = true;
+                this._menuSettingsConfig.menu.items[i].submenu.items[j]['isSelected'] = true;
+                this._menuSettingsConfig.menu.items[i].submenu.items[j].submenu.items[k]['isSelected'] = true;
+                this._menuSettingsConfig.menu.items[i].submenu.items[j].isOpen = true;
               }
             }
           }
@@ -167,8 +167,8 @@ export class VerticalnavComponent implements OnInit {
   }
 
   resetOpenMenu () {
-    for (let i = 0; i < this._menuSettingsConfig.vertical_menu.items.length; i++) {
-      const menu = this._menuSettingsConfig.vertical_menu.items[i];
+    for (let i = 0; i < this._menuSettingsConfig.menu.items.length; i++) {
+      const menu = this._menuSettingsConfig.menu.items[i];
       if (!menu.submenu) {
         menu['isOpen'] = false;
         menu['isActive'] = false;
@@ -185,8 +185,8 @@ export class VerticalnavComponent implements OnInit {
   }
 
   setOpenInNavbar (value) {
-    for (let i = 0; i < this._menuSettingsConfig.vertical_menu.items.length; i++) {
-      const menu = this._menuSettingsConfig.vertical_menu.items[i];
+    for (let i = 0; i < this._menuSettingsConfig.menu.items.length; i++) {
+      const menu = this._menuSettingsConfig.menu.items[i];
       if (!menu.submenu &&
         menu.page === this.router.url) {
         menu['isOpen'] = value;
@@ -297,10 +297,10 @@ export class VerticalnavComponent implements OnInit {
   }
 
   resetOtherActiveMenu(selectedChild, isSubmenuOfSubmenu) {
-    for (let i = 0; i < this._menuSettingsConfig.vertical_menu.items.length; i++) {
-      this._menuSettingsConfig.vertical_menu.items[i]['isSelected'] = false;
-      this._menuSettingsConfig.vertical_menu.items[i]['hover'] = false;
-      this.handleSubmenuItems(this._menuSettingsConfig.vertical_menu.items[i], selectedChild, isSubmenuOfSubmenu);
+    for (let i = 0; i < this._menuSettingsConfig.menu.items.length; i++) {
+      this._menuSettingsConfig.menu.items[i]['isSelected'] = false;
+      this._menuSettingsConfig.menu.items[i]['hover'] = false;
+      this.handleSubmenuItems(this._menuSettingsConfig.menu.items[i], selectedChild, isSubmenuOfSubmenu);
     }
   }
 

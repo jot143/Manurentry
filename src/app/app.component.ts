@@ -90,56 +90,32 @@ export class AppComponent implements OnInit {
   setTitle() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        if (this._themeSettingsConfig.layout.style === 'vertical') {
-          for (let i = 0; i < this._menuSettingsConfig.vertical_menu.items.length; i++) {
-            if (!this._menuSettingsConfig.vertical_menu.items[i].submenu &&
-              this._menuSettingsConfig.vertical_menu.items[i].page === this.router.url) {
-              this.title = this._menuSettingsConfig.vertical_menu.items[i].title;
+        // if (this._themeSettingsConfig.layout.style === 'vertical') {
+          for (let i = 0; i < this._menuSettingsConfig.menu.items.length; i++) {
+            if (!this._menuSettingsConfig.menu.items[i].submenu &&
+              this._menuSettingsConfig.menu.items[i].page === this.router.url) {
+              this.title = this._menuSettingsConfig.menu.items[i].title;
               break;
-            } else if (this._menuSettingsConfig.vertical_menu.items[i].submenu) {
+            } else if (this._menuSettingsConfig.menu.items[i].submenu) {
               // Level 1 menu
-              for (let j = 0; j < this._menuSettingsConfig.vertical_menu.items[i].submenu.items.length; j++) {
-                if (!this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].submenu &&
-                  this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].page === this.router.url) {
-                  this.title = this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].title;
+              for (let j = 0; j < this._menuSettingsConfig.menu.items[i].submenu.items.length; j++) {
+                if (!this._menuSettingsConfig.menu.items[i].submenu.items[j].submenu &&
+                  this._menuSettingsConfig.menu.items[i].submenu.items[j].page === this.router.url) {
+                  this.title = this._menuSettingsConfig.menu.items[i].submenu.items[j].title;
                   break;
-                } else if (this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].submenu) {
+                } else if (this._menuSettingsConfig.menu.items[i].submenu.items[j].submenu) {
                   // Level 2 menu
-                  for (let k = 0; k < this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].submenu.items.length; k++) {
-                    if (this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].submenu.items[k].page === this.router.url) {
-                      this.title = this._menuSettingsConfig.vertical_menu.items[i].submenu.items[j].submenu.items[k].title;
+                  for (let k = 0; k < this._menuSettingsConfig.menu.items[i].submenu.items[j].submenu.items.length; k++) {
+                    if (this._menuSettingsConfig.menu.items[i].submenu.items[j].submenu.items[k].page === this.router.url) {
+                      this.title = this._menuSettingsConfig.menu.items[i].submenu.items[j].submenu.items[k].title;
                     }
                   }
                 }
               }
             }
           }
-        } else if (this._themeSettingsConfig.layout.style === 'horizontal') {
-          for (let i = 0; i < this._menuSettingsConfig.horizontal_menu.items.length; i++) {
-            if (!this._menuSettingsConfig.horizontal_menu.items[i].submenu &&
-              this._menuSettingsConfig.horizontal_menu.items[i].page === this.router.url) {
-              this.title = this._menuSettingsConfig.horizontal_menu.items[i].title;
-              break;
-            } else if (this._menuSettingsConfig.horizontal_menu.items[i].submenu) {
-              // Level 1 menu
-              for (let j = 0; j < this._menuSettingsConfig.horizontal_menu.items[i].submenu.items.length; j++) {
-                if (!this._menuSettingsConfig.horizontal_menu.items[i].submenu.items[j].submenu &&
-                  this._menuSettingsConfig.horizontal_menu.items[i].submenu.items[j].page === this.router.url) {
-                  this.title = this._menuSettingsConfig.horizontal_menu.items[i].submenu.items[j].title;
-                  break;
-                } else if (this._menuSettingsConfig.horizontal_menu.items[i].submenu.items[j].submenu) {
-                  // Level 2 menu
-                  for (let k = 0; k < this._menuSettingsConfig.horizontal_menu.items[i].submenu.items[j].submenu.items.length; k++) {
-                    if (this._menuSettingsConfig.horizontal_menu.items[i].submenu.items[j].submenu.items[k].page === this.router.url) {
-                      this.title = this._menuSettingsConfig.horizontal_menu.items[i].submenu.items[j].submenu.items[k].title;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+        } 
+      // }
     });
   }
 }

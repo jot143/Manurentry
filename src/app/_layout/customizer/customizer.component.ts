@@ -133,8 +133,8 @@ export class CustomizerComponent implements OnInit {
   }
 
   resetOpenMenu() {
-    for (let i = 0; i < this._menuCustomizerConfig.vertical_menu.items.length; i++) {
-      const menu = this._menuCustomizerConfig.vertical_menu.items[i];
+    for (let i = 0; i < this._menuCustomizerConfig.menu.items.length; i++) {
+      const menu = this._menuCustomizerConfig.menu.items[i];
       if (!menu.submenu) {
         menu['isOpen'] = false;
         menu['isActive'] = false;

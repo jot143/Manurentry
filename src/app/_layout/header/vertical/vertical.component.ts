@@ -112,8 +112,8 @@ export class VerticalComponent implements OnInit, AfterViewInit {
     const navbarElement = document.getElementsByClassName('header-navbar');
     const themeColorElement = document.getElementsByClassName('header-navbar');
     const element = document.getElementsByClassName('navbar-header');
-    const boxelement = document.getElementById('customizer');
-    if (iconElement) {
+    const boxElement = document.getElementById('customized');
+    if (iconElement && iconElement.item(0)) {
       if (this._themeSettingsConfig.colorTheme === 'semi-light' || this._themeSettingsConfig.colorTheme === 'light') {
         this._renderer.removeClass(iconElement.item(0), 'white');
         this._renderer.addClass(iconElement.item(0), 'blue-grey');
@@ -205,8 +205,8 @@ export class VerticalComponent implements OnInit, AfterViewInit {
   }
 
   resetOpenMenu() {
-    for (let i = 0; i < this._menuSettingsConfig.vertical_menu.items.length; i++) {
-      const menu = this._menuSettingsConfig.vertical_menu.items[i];
+    for (let i = 0; i < this._menuSettingsConfig.menu.items.length; i++) {
+      const menu = this._menuSettingsConfig.menu.items[i];
       if (!menu.submenu) {
         menu['isOpen'] = false;
         menu['isActive'] = false;
@@ -223,8 +223,8 @@ export class VerticalComponent implements OnInit, AfterViewInit {
   }
 
   setOpenInNavbar(value) {
-    for (let i = 0; i < this._menuSettingsConfig.vertical_menu.items.length; i++) {
-      const menu = this._menuSettingsConfig.vertical_menu.items[i];
+    for (let i = 0; i < this._menuSettingsConfig.menu.items.length; i++) {
+      const menu = this._menuSettingsConfig.menu.items[i];
       if (!menu.submenu &&
         menu.page === this.router.url) {
         menu['isOpen'] = value;

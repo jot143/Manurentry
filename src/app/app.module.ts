@@ -27,7 +27,6 @@ import { HeaderComponent } from './_layout/header/header.component';
 import { HorizontalComponent as HeaderHorizontalComponent } from './_layout/header/horizontal/horizontal.component';
 import { VerticalComponent as HeaderVerticalComponent } from './_layout/header/vertical/vertical.component';
 import { HorizontalCustomizerComponent } from './_layout/customizer/horizontal-customizer/horizontal-customizer.component';
-import { HorizontalnavComponent } from './_layout/navigation/horizontalnav/horizontalnav.component';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoginComponent } from './login';
 import { MenuSettingsConfig } from './_layout/settings/menu-settings.config';
@@ -86,7 +85,6 @@ import { HomeComponent } from './content/home/home.component';
         LoginComponent,
         ChangelogComponent,
         VerticalnavComponent ,
-        HorizontalnavComponent ,
         CustomizerComponent,
         HorizontalCustomizerComponent,
         BlockTemplateComponent,
