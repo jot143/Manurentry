@@ -27,36 +27,40 @@ export const MenuSettingsConfig: MenuConfig = {
         page: '/home'
       },
       {
-        title: 'Product Management',
+        title: 'Item Management',
         icon: 'la-cart-plus',
         page: 'null',
         submenu: {
           items: [
             {
               title: 'Items',
-              page: 'null'
+              page: '/home/item-management/items'
             },
             {
               title: 'Composite Items',
-              page: 'null'
+              page: '/home/item-management/composite-items'
             },
             {
               title: 'Item Groups',
-              page: 'null'
+              page: '/home/item-management/items-groups'
+            },
+            {
+              title: 'Category',
+              page: '/home/item-management/category'
             },
             {
               title: 'Inventory Adjustments',
-              page: 'null'
+              page: '/home/item-management/inventory-adjustments'
             },
           ]
         }
       },
-      {
-        title: 'Changelog',
-        icon: 'la-file',
-        page: '/changelog',
-        badge: { type: 'badge-danger', value: '3.0' }
-      },
+      // {
+      //   title: 'Changelog',
+      //   icon: 'la-file',
+      //   page: '/changelog',
+      //   badge: { type: 'badge-danger', value: '3.0' }
+      // },
       // {
       //   title: 'Templates',
       //   icon: 'la-television',

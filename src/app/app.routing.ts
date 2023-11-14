@@ -22,9 +22,16 @@ const appRoutes: Routes = [
     path: '',
     component: PrivateLayoutComponent,
     children: [
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-      { path: 'logout', component: LoginComponent, canActivate: [AuthGuard] },
-      { path: 'changelog', component: ChangelogComponent, canActivate: [AuthGuard] },
+      { 
+        path: 'home', 
+        component: HomeComponent, 
+        canActivate: [AuthGuard],
+        children: [
+          { path: 'item-management', loadChildren: () => import('./content/home/item-management/item-management.module').then(m => m.ItemManagementModule)},
+          { path: 'logout', component: LoginComponent, canActivate: [AuthGuard] },
+          // { path: 'changelog', component: ChangelogComponent, canActivate: [AuthGuard] },
+        ]
+      },
     ],
   },
   // otherwise redirect to home

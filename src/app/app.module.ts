@@ -89,7 +89,7 @@ import { HomeComponent } from './content/home/home.component';
         HorizontalCustomizerComponent,
         BlockTemplateComponent,
         FullLayoutComponent,
-        HomeComponent
+        HomeComponent,
       ],
     providers: [
         AuthGuard,
