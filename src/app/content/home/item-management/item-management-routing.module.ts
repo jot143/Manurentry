@@ -5,6 +5,8 @@ import { CompositeItemsComponent } from './composite-items/composite-items.compo
 import { ItemsGroupsComponent } from './items-groups/items-groups.component';
 import { CategoryComponent } from './category/category.component';
 import { InventoryAdjustmentsComponent } from './inventory-adjustments/inventory-adjustments.component';
+import { ItemsNewComponent } from './items/items-new/items-new.component';
+import { ItemsEditComponent } from './items/items-edit/items-edit.component';
 
 const routes: Routes = [
   {
@@ -15,6 +17,14 @@ const routes: Routes = [
   {
     path: 'items',
     component: ItemsComponent
+  },
+  {
+    path: 'items-new',
+    component: ItemsNewComponent
+  },
+  {
+    path: 'items-edit',
+    component: ItemsEditComponent
   },
   {
     path: 'composite-items',

@@ -7,6 +7,9 @@ import { CompositeItemsComponent } from './composite-items/composite-items.compo
 import { InventoryAdjustmentsComponent } from './inventory-adjustments/inventory-adjustments.component';
 import { ItemsGroupsComponent } from './items-groups/items-groups.component';
 import { ItemsComponent } from './items/items.component';
+import { ItemsNewComponent } from './items/items-new/items-new.component';
+import { ItemsEditComponent } from './items/items-edit/items-edit.component';
+import { BreadcrumbModule } from 'src/app/_layout/breadcrumb/breadcrumb.module';
 
 
 @NgModule({
@@ -15,11 +18,14 @@ import { ItemsComponent } from './items/items.component';
     ItemsComponent,
     CompositeItemsComponent,
     ItemsGroupsComponent,
-    InventoryAdjustmentsComponent
+    InventoryAdjustmentsComponent,
+    ItemsNewComponent,
+    ItemsEditComponent
   ],
   imports: [
     CommonModule,
-    ItemManagementRoutingModule
+    ItemManagementRoutingModule,
+    BreadcrumbModule
   ]
 })
 export class ItemManagementModule { }

@@ -19,20 +19,22 @@ const appRoutes: Routes = [
   },
   // Private layout
   {
-    path: '',
+    path: 'home',
     component: PrivateLayoutComponent,
     children: [
       { 
-        path: 'home', 
-        component: HomeComponent, 
-        canActivate: [AuthGuard],
-        children: [
-          { path: 'item-management', loadChildren: () => import('./content/home/item-management/item-management.module').then(m => m.ItemManagementModule)},
-          { path: 'logout', component: LoginComponent, canActivate: [AuthGuard] },
-          // { path: 'changelog', component: ChangelogComponent, canActivate: [AuthGuard] },
-        ]
+        path: '', 
+        component: HomeComponent
+      },
+      { 
+        path: 'item-management', 
+        loadChildren: () => import('./content/home/item-management/item-management.module').then(m => m.ItemManagementModule)},
+      { 
+        path: 'logout', 
+        component: LoginComponent
       },
     ],
+    canActivate: [AuthGuard],
   },
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
