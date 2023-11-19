@@ -3,9 +3,9 @@
         <div class="content-header row mb-1">
             <app-breadcrumb class="col-12" [breadcrumb]="breadcrumb">
                 <div class="d-flex justify-content-end" >
-                    <button type="button" class="btn btn-danger btn-glow btn-block" style="width: 200px;">
+                    <button type="button" class="btn btn-danger btn-glow btn-block" style="width: 200px;" (click)="gotoNewItemPage()">
                       <i class="ficon feather ft-plus"></i>
-                      <span>New Task</span>
+                      <span>New Item</span>
                     </button>
                   </div>
             </app-breadcrumb>

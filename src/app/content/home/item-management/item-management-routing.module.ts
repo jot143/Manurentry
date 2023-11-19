@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ItemsComponent } from './items/items.component';
 import { CompositeItemsComponent } from './composite-items/composite-items.component';
-import { ItemsGroupsComponent } from './items-groups/items-groups.component';
 import { CategoryComponent } from './category/category.component';
 import { InventoryAdjustmentsComponent } from './inventory-adjustments/inventory-adjustments.component';
 import { ItemsNewComponent } from './items/items-new/items-new.component';
@@ -29,10 +28,6 @@ const routes: Routes = [
   {
     path: 'composite-items',
     component: CompositeItemsComponent
-  },
-  {
-    path: 'items-groups',
-    component: ItemsGroupsComponent
   },
   {
     path: 'category',

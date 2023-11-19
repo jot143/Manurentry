@@ -1,0 +1,29 @@
+form {
+  .form-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem !important;
+    label {
+      width: 100px;
+    }
+    .form-control {
+      flex: 1;
+      height: calc(1em + 1rem + 4px);
+      margin-right: 1rem;
+    }
+
+    .input-group {
+      padding-right: 1rem;
+      flex: 1;
+      .form-control {
+        margin-right: 0;
+        flex: 1;
+      }
+    }
+  }
+}
+
+.modal-backdrop {
+  z-index: 1050 !important;
+}

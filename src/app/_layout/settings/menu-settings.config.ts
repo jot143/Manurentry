@@ -41,10 +41,6 @@ export const MenuSettingsConfig: MenuConfig = {
               page: '/home/item-management/composite-items'
             },
             {
-              title: 'Item Groups',
-              page: '/home/item-management/items-groups'
-            },
-            {
               title: 'Category',
               page: '/home/item-management/category'
             },

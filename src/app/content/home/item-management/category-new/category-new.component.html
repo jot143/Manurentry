@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add New Category</h4>
+    <a data-action="close"><i class="feather ft-x" (click)="activeModal.dismiss('Cross click')"></i></a>
+</div>
+<div class="modal-body">
+    <form class="form-body" [formGroup]="form">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label>Parent Category</label>
+                    <select class="custom-select form-control" placeholder="Select Category" formControlName="parentCategory" name="parentCategory">
+                        <option value="" selected>Select Category</option>
+                    </select>
+                    <select-nested class="form-control"></select-nested>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" name="category" formControlName="category" class="form-control">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-primary">Add</button>
+</div>

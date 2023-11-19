@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-items',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent {
+
+  constructor(private navCtrl: Router) {
+
+  }
+
   breadcrumb = {
     'mainlabel': 'Items',
     'links': [
@@ -20,4 +26,8 @@ export class ItemsComponent {
       }
     ]
   };
+
+  gotoNewItemPage() {
+    this.navCtrl.navigateByUrl('/home/item-management/items-new');
+  }
 }

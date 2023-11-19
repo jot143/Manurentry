@@ -5,11 +5,14 @@ import { ItemManagementRoutingModule } from './item-management-routing.module';
 import { CategoryComponent } from './category/category.component';
 import { CompositeItemsComponent } from './composite-items/composite-items.component';
 import { InventoryAdjustmentsComponent } from './inventory-adjustments/inventory-adjustments.component';
-import { ItemsGroupsComponent } from './items-groups/items-groups.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemsNewComponent } from './items/items-new/items-new.component';
 import { ItemsEditComponent } from './items/items-edit/items-edit.component';
 import { BreadcrumbModule } from 'src/app/_layout/breadcrumb/breadcrumb.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CategoryNewComponent } from './category-new/category-new.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { InputModule } from '../../partials/inputs/input.module';
 
 
 @NgModule({
@@ -17,15 +20,19 @@ import { BreadcrumbModule } from 'src/app/_layout/breadcrumb/breadcrumb.module';
     CategoryComponent,
     ItemsComponent,
     CompositeItemsComponent,
-    ItemsGroupsComponent,
     InventoryAdjustmentsComponent,
     ItemsNewComponent,
-    ItemsEditComponent
+    ItemsEditComponent,
+    CategoryNewComponent
   ],
   imports: [
     CommonModule,
     ItemManagementRoutingModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModalModule,
+    InputModule
   ]
 })
 export class ItemManagementModule { }

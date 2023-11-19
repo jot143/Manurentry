@@ -1,1 +1,155 @@
-<p>items-new works!</p>
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row mb-1">
+            <app-breadcrumb class="col-12" [breadcrumb]="breadcrumb">
+                <div class="d-flex justify-content-end">
+                </div>
+            </app-breadcrumb>
+        </div>
+        <div class="content-body">
+            <form class="form-body" [formGroup]="form">
+                <div class="row">
+                    <div class="col-md-8 col-12">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" formControlName="name" class="form-control">
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>SKU</label>
+                            <input type="text" name="sku" formControlName="sku" class="form-control">
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>Unit</label>
+                            <select class="custom-select form-control" placeholder="Select Unit" formControlName="unit" name="unit">
+                                <option value="" selected>Select Unit</option>
+                                <option value="pcs">pcs</option>
+                                <option value="box">box</option>
+                                <option value="cm">cm</option>
+                                <option value="dz">dz</option>
+                                <option value="ft">ft</option>
+                                <option value="g">g</option>
+                                <option value="in">in</option>
+                                <option value="kg">kg</option>
+                                <option value="km">km</option>
+                                <option value="lb">lb</option>
+                                <option value="ml">ml</option>
+                                <option value="mg">mg</option>
+                                <option value="m">m</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category</label>
+                            <input type="text" name="category" formControlName="category" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-8 col-12">
+                        <div class="form-group">
+                            <label>Color</label>
+                            <input type="text" name="color" placeholder="color" formControlName="color" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Size</label>
+                            <input type="text" name="size" formControlName="size" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-8 col-12">
+                        <div class="form-group">
+                            <label>Dimension</label>
+                            <input type="text" name="dimensionLength" placeholder="Length" formControlName="dimensionLength" class="form-control">
+                            <input type="text" name="dimensionWidth" placeholder="Width" formControlName="dimensionWidth" class="form-control">
+                            <input type="text" name="dimensionHeight" placeholder="Height" formControlName="dimensionHeight" class="form-control">
+                            <select class="custom-select form-control" formControlName="dimensionUnit" name="dimensionUnit">
+                                <option value="pcs">pcs</option>
+                                <option value="box">box</option>
+                                <option value="cm" selected>cm</option>
+                                <option value="dz">dz</option>
+                                <option value="ft">ft</option>
+                                <option value="g">g</option>
+                                <option value="in">in</option>
+                                <option value="kg">kg</option>
+                                <option value="km">km</option>
+                                <option value="lb">lb</option>
+                                <option value="ml">ml</option>
+                                <option value="mg">mg</option>
+                                <option value="m">m</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Weight</label>
+                            <div class="input-group">
+                                <input type="text" name="weight" formControlName="weight" class="form-control">
+                                <div class="input-group-append">
+                                    <select class="form-control" formControlName="weightUnit" value="cm" name="unit">
+                                        <option value="pcs">pcs</option>
+                                        <option value="box">box</option>
+                                        <option value="cm" selected>cm</option>
+                                        <option value="dz">dz</option>
+                                        <option value="ft">ft</option>
+                                        <option value="g">g</option>
+                                        <option value="in">in</option>
+                                        <option value="kg">kg</option>
+                                        <option value="km">km</option>
+                                        <option value="lb">lb</option>
+                                        <option value="ml">ml</option>
+                                        <option value="mg">mg</option>
+                                        <option value="m">m</option>
+                                    </select>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <div class="form-group">
+                            <label>EAN</label>
+                            <input type="text" name="ean" formControlName="ean" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>HSN</label>
+                            <input type="text" name="hsn" formControlName="hsn" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>UPS</label>
+                            <input type="text" name="ups" formControlName="ups" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <div class="form-group">
+                            <label>MPN</label>
+                            <input type="text" name="mpn" formControlName="mpn" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>ISBN</label>
+                            <input type="text" name="isbn" formControlName="isbn" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-8 col-12">
+                        <div class="form-group">
+                            <label>Selling Price</label>
+                            <input type="text" name="salePrice" formControlName="salePrice" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Purchasing</label>
+                            <input type="text" name="purchasePrice" formControlName="purchasePrice" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
