@@ -44,6 +44,7 @@ import { VerticalnavComponent } from './_layout/navigation/verticalnav/verticaln
 import { environment } from '../environments/environment';
 import { routing } from './app.routing';
 import { HomeComponent } from './content/home/home.component';
+import { ToastrModule } from 'ngx-toastr';
 
 // Routing
 // Components
@@ -52,6 +53,8 @@ import { HomeComponent } from './content/home/home.component';
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot(), // ToastrModule added
         ReactiveFormsModule,
         HttpClientModule,
         BrowserAnimationsModule,

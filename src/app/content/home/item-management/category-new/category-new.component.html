@@ -13,13 +13,13 @@
 
                 <div class="form-group">
                     <label>Category</label>
-                    <input type="text" name="category" formControlName="category" class="form-control">
+                    <input type="text" name="category" formControlName="name" class="form-control">
                 </div>
             </div>
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-    <button type="button" class="btn btn-primary">Add</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Close</button>
+    <button type="button" class="btn btn-primary" (click)="addCategory()">Add</button>
 </div>

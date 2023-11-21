@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 // WARNING - Values under "firebase" and value of "googleApiKey" needs to be replaced from your own accounts
-// If left as is, it firbase and google map related functionality will not work on LIVE instance.
+// If left as is, it firebase and google map related functionality will not work on LIVE instance.
 export const environment = {
   production: false,
   API_URL: 'http://localhost:50000',

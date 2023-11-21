@@ -8,7 +8,7 @@ export class CategoryService {
 
   constructor(private requestService: RequestService) { }
 
-  addCategory(data: Partial<{parentCategory: string, category: string}>, success: (value: any) => void) {
-    return this.requestService.send('category-add', data, success);
+  addCategory(data: Partial<{parentCategory: string, name: string}>, success: (value: any) => void) {
+    this.requestService.send("addCategories", data, success);
   }
 }

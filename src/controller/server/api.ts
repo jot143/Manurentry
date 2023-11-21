@@ -53,8 +53,8 @@ const API: any = {
       url: '/admin/category-get',
     },
     addCategories: {
-      requestType: 'get',
-      url: '/admin/category-add',
+      requestType: 'post',
+      url: '/admin/category/create',
     }
     //
 

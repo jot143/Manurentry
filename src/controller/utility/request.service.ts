@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Request } from './Request';
 import { RequestLoader } from './RequestLoader';
 import { SpinnerService } from './spinner.service';
-import { ToastrService } from './toastr.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,7 @@ export class RequestService {
     requestName: any,
     data: any = {},
     successHandler: any = null,
-    backgroundmode = true,
+    backgroundMode = true,
     loaderHandler: null | RequestLoader = null,
     errorHandler = null,
     formData = false
@@ -56,7 +56,7 @@ export class RequestService {
           return tempUrl;
         };
 
-        if (backgroundmode === false && loaderHandler) {
+        if (backgroundMode === false && loaderHandler) {
           loaderHandler.start();
         }
 

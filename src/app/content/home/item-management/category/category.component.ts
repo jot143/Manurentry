@@ -30,5 +30,9 @@ export class CategoryComponent {
   newCategory() {
 		const modalRef = this.modalService.open(CategoryNewComponent, {});
     modalRef.componentInstance.parent = null;
+
+    modalRef.result.then((result) => {
+      console.log(result);
+    })
 	}
 }

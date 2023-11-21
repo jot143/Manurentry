@@ -14,7 +14,7 @@ export class CategoryNewComponent {
 
   form = new FormGroup({
     parentCategory:  new FormControl(''),
-    category:  new FormControl('', [Validators.required, Validators.minLength(3)]),
+    name:  new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
 
   constructor(public activeModal: NgbActiveModal, private categoryService: CategoryService) {}
@@ -28,7 +28,7 @@ export class CategoryNewComponent {
     const data = this.form.value;
 
     const success = (value) => {
-
+      this.activeModal.close(value.data);
     }
     this.categoryService.addCategory(data, success);
   }
