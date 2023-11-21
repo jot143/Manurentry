@@ -50,52 +50,12 @@ const API: any = {
     //Categories
     getCategories: {
       requestType: 'get',
-      url: '/biz/categories',
+      url: '/admin/category-get',
     },
-
-    //biz
-    getBizs: {
-      requestType: 'post',
-      url: '/biz/filter',
-    },
-    getBiz: {
+    addCategories: {
       requestType: 'get',
-      url: '/biz/{{id}}',
-    },
-    getTagSuggestion: {
-      requestType: 'get',
-      url: '/biz/get-tag-suggestion/{{searchText}}',
-    },
-
-    //redeem
-    showCode: {
-      requestType: 'post',
-      url: '/redeem/show-code',
-    },
-    getCode: {
-      requestType: 'post',
-      url: '/redeem/get-code',
-    },
-    redeemHistory: {
-      requestType: 'get',
-      url: '/redeem/history',
-    },
-    updateRedeemStatus: {
-      requestType: 'put',
-      url: '/redeem/response',
-    },
-
-
-    //favorite product
-    getFavorites: {
-      requestType: 'get',
-      url: '/biz/favorites',
-    },
-    toggleFavoriteProduct: {
-      requestType: 'post',
-      url: '/biz/toggle-favorite',
-    },
-
+      url: '/admin/category-add',
+    }
     //
 
   },

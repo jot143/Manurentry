@@ -6,6 +6,7 @@
 // If left as is, it firbase and google map related functionality will not work on LIVE instance.
 export const environment = {
   production: false,
+  API_URL: 'http://localhost:50000',
   firebase: {
     apiKey: 'AIzaSyAvHtu5rrqKSZQg75R2MYqlNgGdMKy2YR4',
     projectId: 'modern-admin-8453e',

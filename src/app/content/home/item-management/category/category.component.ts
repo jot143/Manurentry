@@ -28,7 +28,7 @@ export class CategoryComponent {
   }
 
   newCategory() {
-		const modalRef = this.modalService.open(CategoryNewComponent);
-		// modalRef.componentInstance.name = 'New Category';
+		const modalRef = this.modalService.open(CategoryNewComponent, {});
+    modalRef.componentInstance.parent = null;
 	}
 }

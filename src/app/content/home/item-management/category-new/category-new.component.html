@@ -8,10 +8,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label>Parent Category</label>
-                    <select class="custom-select form-control" placeholder="Select Category" formControlName="parentCategory" name="parentCategory">
-                        <option value="" selected>Select Category</option>
-                    </select>
-                    <select-nested class="form-control"></select-nested>
+                    <b>{{parent ? parent : 'None'}}</b>
                 </div>
 
                 <div class="form-group">
