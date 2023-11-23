@@ -50,11 +50,19 @@ const API: any = {
     //Categories
     getCategories: {
       requestType: 'get',
-      url: '/admin/category-get',
+      url: '/admin/category/index',
     },
-    addCategories: {
+    addCategory: {
       requestType: 'post',
       url: '/admin/category/create',
+    },
+    editCategory: {
+      requestType: 'put',
+      url: '/admin/category/{{id}}',
+    },
+    deleteCategory: {
+      requestType: 'delete',
+      url: '/admin/category/{{id}}',
     }
     //
 

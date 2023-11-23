@@ -13,8 +13,9 @@ export class Category extends Model {
   updatedAt!: string;
   deletedAt!: string;
 
-  icon : Media | null = null;
+  children: Category[];
 
+  icon : Media | null = null;
   get getIcon() {
 
     if(this.icon?.value) {

@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h4 class="modal-title">Edit Category</h4>
+    <a data-action="close"><i class="feather ft-x" (click)="activeModal.dismiss('Cross click')"></i></a>
+</div>
+<div class="modal-body">
+    <form class="form-body" [formGroup]="form">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" name="category" formControlName="name" class="form-control">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Close</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Add</button>
+</div>

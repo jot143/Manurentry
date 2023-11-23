@@ -1,0 +1,15 @@
+.list-group-item {
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 0;
+  border-width: 1px 0 0 0;
+  display: flex;
+  flex: 1;
+}
+
+.list-group-item .category-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}

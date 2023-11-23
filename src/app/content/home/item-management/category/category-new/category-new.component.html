@@ -8,7 +8,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label>Parent Category</label>
-                    <b>{{parent ? parent : 'None'}}</b>
+                    <b>{{parent ? parent.name : 'None'}}</b>
                 </div>
 
                 <div class="form-group">
@@ -21,5 +21,5 @@
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Close</button>
-    <button type="button" class="btn btn-primary" (click)="addCategory()">Add</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Add</button>
 </div>

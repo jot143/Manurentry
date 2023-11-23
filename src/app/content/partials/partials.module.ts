@@ -2,15 +2,15 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CardModule } from './general/card/card.module';
-import { SelectNestedComponent } from './inputs/select-nested/select-nested.component';
+import { CategoryViewComponent } from './category-view/category-view.component';
 
 
 @NgModule({
   declarations: [
+    CategoryViewComponent
   ],
   exports: [
-    CardModule
+    CategoryViewComponent
   ],
   imports: [
     CommonModule,

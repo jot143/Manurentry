@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CategoryNewComponent } from '../category-new/category-new.component';
+import { CategoryNewComponent } from './category-new/category-new.component';
+import { CategoryService } from 'src/services/category.service';
+import { CategoryEditComponent } from './category-edit/category-edit.component';
+import { Category } from 'src/controller/model/Category';
 
 @Component({
   selector: 'app-category',
@@ -23,16 +26,24 @@ export class CategoryComponent {
     ]
   };
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal,  public categoryService: CategoryService) {
     
   }
 
-  newCategory() {
+  ngOnInit() {
+    this.getAllCategories();
+  }
+
+  add() {
 		const modalRef = this.modalService.open(CategoryNewComponent, {});
     modalRef.componentInstance.parent = null;
 
     modalRef.result.then((result) => {
-      console.log(result);
+      this.categoryService.categories.push(result);
     })
 	}
+
+  getAllCategories() {
+    this.categoryService.getAll()
+  }
 }

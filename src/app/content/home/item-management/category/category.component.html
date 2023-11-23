@@ -3,7 +3,7 @@
         <div class="content-header row mb-1">
             <app-breadcrumb class="col-12" [breadcrumb]="breadcrumb">
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-danger btn-glow btn-block" style="width: 150px;" (click)="newCategory()">
+                    <button type="button" class="btn btn-danger btn-glow btn-block" style="width: 150px;" (click)="add()">
                         <i class="ficon feather ft-plus"></i>
                         <span>New</span>
                     </button>
@@ -13,77 +13,7 @@
         <div class="content-body">
             <div class="just-padding">
                 <div class="list-group list-group-root well">
-                  <div class="list-group-item">Item 1</div>
-                  <div class="list-group">
-                    <div class="list-group-item">Item 1.1</div>
-                    <div class="list-group">
-                      <div class="list-group-item">Item 1.1.1</div>
-                      <div class="list-group-item">Item 1.1.2</div>
-                      <div class="list-group-item">Item 1.1.3</div>
-                    </div>
-              
-                    <div class="list-group-item">Item 1.2</div>
-                    <div class="list-group">
-                      <div class="list-group-item">Item 1.2.1</div>
-                      <div class="list-group-item">Item 1.2.2</div>
-                      <div class="list-group-item">Item 1.2.3</div>
-                    </div>
-              
-                    <div class="list-group-item">Item 1.3</div>
-                    <div class="list-group">
-                      <div class="list-group-item">Item 1.3.1</div>
-                      <div class="list-group-item">Item 1.3.2</div>
-                      <div class="list-group-item">Item 1.3.3</div>
-                    </div>
-                  </div>
-              
-                  <div class="list-group-item">Item 2</div>
-                  <div class="list-group">
-                    <div class="list-group-item">Item 2.1</div>
-                    <div class="list-group">
-                      <div class="list-group-item">Item 2.1.1</div>
-                      <div class="list-group-item">Item 2.1.2</div>
-                      <div class="list-group-item">Item 2.1.3</div>
-                    </div>
-              
-                    <div class="list-group-item">Item 2.2</div>
-                    <div class="list-group">
-                      <div class="list-group-item">Item 2.2.1</div>
-                      <div class="list-group-item">Item 2.2.2</div>
-                      <div class="list-group-item">Item 2.2.3</div>
-                    </div>
-              
-                    <div class="list-group-item">Item 2.3</div>
-                    <div class="list-group">
-                      <div class="list-group-item">Item 2.3.1</div>
-                      <div class="list-group-item">Item 2.3.2</div>
-                      <div class="list-group-item">Item 2.3.3</div>
-                    </div>
-                  </div>
-              
-                  <div class="list-group-item">Item 3</div>
-                  <div class="list-group">
-                    <div class="list-group-item">Item 3.1</div>
-                    <div class="list-group">
-                      <div class="list-group-item">Item 3.1.1</div>
-                      <div class="list-group-item">Item 3.1.2</div>
-                      <div class="list-group-item">Item 3.1.3</div>
-                    </div>
-              
-                    <div class="list-group-item">Item 3.2</div>
-                    <div class="list-group">
-                      <div class="list-group-item">Item 3.2.1</div>
-                      <div class="list-group-item">Item 3.2.2</div>
-                      <div class="list-group-item">Item 3.2.3</div>
-                    </div>
-              
-                    <div class="list-group-item">Item 3.3</div>
-                    <div class="list-group">
-                      <div class="list-group-item">Item 3.3.1</div>
-                      <div class="list-group-item">Item 3.3.2</div>
-                      <div class="list-group-item">Item 3.3.3</div>
-                    </div>
-                  </div>
+                  <app-category-view  *ngFor="let cat of this.categoryService.categories" [category]="cat"></app-category-view>
                 </div>
               </div>
         </div>
