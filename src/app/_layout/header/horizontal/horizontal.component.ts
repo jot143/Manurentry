@@ -117,7 +117,7 @@ export class HorizontalComponent implements OnInit, AfterViewInit {
       this.authService.doLogout().then(res => {
         this.router.navigate(['/login']);
       }, err => {
-        console.log(err);
+        console.error(err);
       });
     }
   }

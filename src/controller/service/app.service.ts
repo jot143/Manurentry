@@ -9,7 +9,7 @@ import { PushNotificationService } from "./push-notification.service";
 import { RedeemService } from "./redeem.service";
 import { RequestService } from "../utility/request.service";
 import { Subject } from "rxjs";
-import { ToastrService } from "../utility/toastr.service";
+import { ToastrService } from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root',
@@ -52,7 +52,6 @@ export class AppService {
     return new Promise((resolve, reject) => {
       this.platform.ready().then(() => {
         this.pushNotification.getToken().then((token: any) => {
-          console.log(token);
           const success = (value: any) => { };
           this.request.send('registerDeviceOnServer', { fcmToken: token.value }, success);
         });
@@ -62,10 +61,8 @@ export class AppService {
 
   subscribePushNotification() {
     this.pushNotification.pushNotificationReceived.subscribe((notification: PushNotificationSchema) => {
-      console.log(notification);
       App.getState().then(state => {
         if (state.isActive === true) {
-          console.log('isActive');
           this.zone.run(() => {
             this.toastr.info(notification.body as string);
           });
@@ -74,7 +71,6 @@ export class AppService {
     });
 
     this.pushNotification.pushNotificationActionPerformed.subscribe((notificationBar: ActionPerformed) => {
-      console.log(notificationBar);
       if (notificationBar.actionId === 'tap') {
         const notification = notificationBar.notification;
         this.zone.run(() => {

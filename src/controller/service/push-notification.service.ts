@@ -68,14 +68,13 @@ export class PushNotificationService {
   }
 
   async registerWeb() {
-    console.log('registerWeb')
     // this.swPush.subscription.subscribe((sub: PushSubscription | null) => {
-    //     console.log(sub)
+    //     console.info(sub)
     // });
     // this.swPush.requestSubscription({
     //   serverPublicKey: environment.webPushKey
     // }).then((sub: PushSubscription) => {
-    //   console.log(sub);
+    //   console.info(sub);
     // }).catch(err => console.error("Could not subscribe to notifications", err));
   }
 
@@ -102,7 +101,7 @@ export class PushNotificationService {
 
         const channel: Channel = {
           id: '1234567890',
-          name: environment.appName,
+          name: environment.APP_NAME,
           importance: 5
         };
 

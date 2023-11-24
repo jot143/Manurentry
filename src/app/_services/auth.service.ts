@@ -16,7 +16,7 @@ export class AuthService {
           resolve(res);
         },
         err => {
-          console.log(err);
+          console.error(err);
           reject(err);
         }
       );
@@ -32,7 +32,7 @@ export class AuthService {
           resolve(res);
         },
         err => {
-          console.log(err);
+          console.error(err);
           reject(err);
         }
       );
@@ -48,7 +48,7 @@ export class AuthService {
           resolve(res);
         },
         err => {
-          console.log(err);
+          console.error(err);
           reject(err);
         }
       );
@@ -66,7 +66,7 @@ export class AuthService {
           resolve(res);
         },
         err => {
-          console.log(err);
+          console.error(err);
           reject(err);
         }
       );

@@ -23,18 +23,17 @@ export class CategoryService {
     const success = (value) => {
       if(value.status = 'OK') {
         this.categories = Category.createFromArray(value.data);
-        console.log(this.categories)
       }
     }
     this.requestService.send("getCategories", {}, success);
   }
 
-  deleteCategory(data: Partial<{id: number}>) {
-    const success = (value) => {
+  deleteCategory(data: Partial<{id: number}>, success: (value: any) => void) {
+    const _success = (value) => {
       if(value.status = 'OK' && data?.id) {
-        this.categories = [...this.categories.filter((item) => item.id != Number(data.id))];
+        success && success(value);
       }
     }
-    this.requestService.send("deleteCategory", data, success);
+    this.requestService.send("deleteCategory", data, _success);
   }
 }

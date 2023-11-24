@@ -153,7 +153,6 @@ export class CustomizerComponent implements OnInit {
   changeNavbarFontColor($event: NgbNavChangeEvent) {
     const headerElement = document.getElementsByClassName('header-navbar');
     if ($event.nextId === 1) {
-      console.log('hgdfh');
       this._renderer.removeClass(headerElement.item(0), 'navbar-dark');
       this._renderer.removeClass(headerElement.item(0), 'navbar-semi-light');
       this._renderer.removeClass(headerElement.item(0), 'navbar-light');

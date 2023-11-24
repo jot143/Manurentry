@@ -6,6 +6,7 @@
 // If left as is, it firebase and google map related functionality will not work on LIVE instance.
 export const environment = {
   production: false,
+  APP_NAME: 'Manuentry',
   API_URL: 'http://localhost:50000',
   ASSETS_URL: 'http://localhost:50000',
   firebase: {

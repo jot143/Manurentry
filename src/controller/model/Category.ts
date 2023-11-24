@@ -25,7 +25,7 @@ export class Category extends Model {
   deletedAt!: string;
 
   @ArrayDecorator('Category')
-  children: Category[];
+  children: Category[] = [];
 
   icon : Media | null = null;
   get getIcon() {

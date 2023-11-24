@@ -41,22 +41,24 @@ export class CategoryViewComponent {
     modalRef.result.then((result) => {
         this.category.name = result.name;
         this.category.slug = result.slug;
-        this.syncEmitter.emit('edit');
+        this.syncEmitter.emit({ action:'edit', data: this.category});
     })
 	}
 
   deleteCategory() {
 		const confirmed = confirm('Are you sure to delete ? ');
     if(confirmed) {
-      this.categoryService.deleteCategory({id: this.category.id});
-      this.syncEmitter.emit('delete');
+      this.categoryService.deleteCategory({id: this.category.id}, () => {
+        this.syncEmitter.emit({action :'delete', data: this.category});
+      });
     }
 	}
 
-  onSyncEmitter(e: 'edit' | 'delete') {
-    if(e == 'edit') {
-      console.log(this.category.children);
+  onSyncEmitter(e: { action: 'edit' | 'delete', data: any}) {
+    if(e.action == 'edit') {
       this.category.children = [...this.category.children];
+    } else if (e.action == 'delete') {
+      this.category.children = [...this.category.children.filter((item) => item.id != Number(e.data.id))];
     }
     this.cd.detectChanges();
   }

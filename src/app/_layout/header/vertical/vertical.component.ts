@@ -68,7 +68,7 @@ export class VerticalComponent implements OnInit, AfterViewInit {
       this.authService.doLogout().then(res => {
         window.location.href = '/login';
       }, err => {
-        console.log(err);
+        console.error(err);
       });
     }
   }
