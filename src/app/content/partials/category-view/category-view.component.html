@@ -1,8 +1,8 @@
-<div class="list-group-item">
+<div class="list-group-item {{mode}}" (click)="selected()">
     <div [ngStyle]="{paddingLeft: nestedLevel * 30 + 'px'}"></div>
     <div class="category-body">
         <div>{{ category.name }}</div>
-        <div>
+        <div *ngIf="mode === 'list'">
             <a [routerLink]="" class="success mr-1 mrless"><i class="feather ft-plus-circle" (click)="add()"></i></a>
             <a [routerLink]="" class="primary edit mr-1 mrless"><i class="la la-pencil" (click)="edit()"></i></a>
             <a [routerLink]="" class="danger delete mr-1 mrless"><i class="la la-trash-o" (click)="deleteCategory()"></i></a>
@@ -10,5 +10,5 @@
     </div>
 </div>
 <div class="list-group" *ngFor="let cat of category.children">
-    <app-category-view [category]="cat" [nestedLevel]="nestedLevel + 1" (syncEmitter)="onSyncEmitter($event)"></app-category-view>
+    <app-category-view [mode]="mode" [category]="cat" [nestedLevel]="nestedLevel + 1" (syncEmitter)="onSyncEmitter($event)" (select)="childSelected($event)"></app-category-view>
 </div>

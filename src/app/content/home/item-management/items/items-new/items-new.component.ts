@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CategoryService } from 'src/services/category.service';
+import { ItemService } from 'src/services/item.service';
 
 @Component({
   selector: 'app-items-new',
@@ -48,4 +50,29 @@ export class ItemsNewComponent {
     salePrice: new FormControl('0'),
     purchasePrice: new FormControl('0')
   });
+
+  constructor(private itemService: ItemService) {
+
+  }
+
+  ngOnInit() {
+    this.form.reset();
+  }
+
+  save() {
+    console.log(this.form.value)
+    this.form.markAllAsTouched();
+    if(this.form.invalid) {
+      return;
+    }
+
+    const success = (value) => {
+      if(value.status == 'OK') {
+
+      }
+    }
+
+    this.itemService.addItem(this.form.value, success);
+  }
+
 }

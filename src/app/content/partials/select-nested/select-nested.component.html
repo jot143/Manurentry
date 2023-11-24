@@ -1,0 +1,4 @@
+<input class="custom-select" #input [placeholder]="placeholder" readonly>
+<div class="drop-down">
+    <app-category-view mode="drop-down"  *ngFor="let cat of categoryService.categories" [category]="cat" (syncEmitter)="onSyncEmitter($event)" (select)="onSelected($event)"></app-category-view>
+</div>

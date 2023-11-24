@@ -14,8 +14,10 @@ export class CategoryViewComponent {
 
   @Input() category: Category = new Category();
   @Input() nestedLevel = 0;
+  @Input() mode: 'list' | 'dropdown' = 'list';
 
   @Output() syncEmitter = new EventEmitter();
+  @Output() select = new EventEmitter();
 
   constructor(private modalService: NgbModal, private categoryService: CategoryService, private cd: ChangeDetectorRef) {}
 
@@ -61,5 +63,13 @@ export class CategoryViewComponent {
       this.category.children = [...this.category.children.filter((item) => item.id != Number(e.data.id))];
     }
     this.cd.detectChanges();
+  }
+
+  selected() {
+    this.select.emit(this.category);
+  }
+
+  childSelected(e) {
+    this.select.emit(e);
   }
 }
