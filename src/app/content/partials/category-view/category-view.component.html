@@ -10,5 +10,5 @@
     </div>
 </div>
 <div class="list-group" *ngFor="let cat of category.children">
-    <app-category-view [category]="cat" [nestedLevel]="nestedLevel + 1"></app-category-view>
+    <app-category-view [category]="cat" [nestedLevel]="nestedLevel + 1" (syncEmitter)="onSyncEmitter($event)"></app-category-view>
 </div>

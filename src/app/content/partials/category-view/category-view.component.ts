@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Category } from 'src/controller/model/Category';
 import { CategoryNewComponent } from '../../home/item-management/category/category-new/category-new.component';
@@ -15,7 +15,9 @@ export class CategoryViewComponent {
   @Input() category: Category = new Category();
   @Input() nestedLevel = 0;
 
-  constructor(private modalService: NgbModal, private categoryService: CategoryService) {}
+  @Output() syncEmitter = new EventEmitter();
+
+  constructor(private modalService: NgbModal, private categoryService: CategoryService, private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
 
@@ -39,6 +41,7 @@ export class CategoryViewComponent {
     modalRef.result.then((result) => {
         this.category.name = result.name;
         this.category.slug = result.slug;
+        this.syncEmitter.emit('edit');
     })
 	}
 
@@ -46,6 +49,15 @@ export class CategoryViewComponent {
 		const confirmed = confirm('Are you sure to delete ? ');
     if(confirmed) {
       this.categoryService.deleteCategory({id: this.category.id});
+      this.syncEmitter.emit('delete');
     }
 	}
+
+  onSyncEmitter(e: 'edit' | 'delete') {
+    if(e == 'edit') {
+      console.log(this.category.children);
+      this.category.children = [...this.category.children];
+    }
+    this.cd.detectChanges();
+  }
 }

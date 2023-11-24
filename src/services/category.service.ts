@@ -22,7 +22,7 @@ export class CategoryService {
   getAll() {
     const success = (value) => {
       if(value.status = 'OK') {
-        this.categories = value.data;
+        this.categories = Category.createFromArray(value.data);
         console.log(this.categories)
       }
     }
