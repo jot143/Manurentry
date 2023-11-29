@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryService } from 'src/services/category.service';
+import { Component } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItemService } from 'src/services/item.service';
 
 @Component({
@@ -24,15 +23,8 @@ export class ItemsNewComponent {
     ]
   };
 
-  form = new FormGroup({
-    name: new FormControl('', Validators.required),
+  variantForm = () => new FormGroup({
     sku:  new FormControl('', Validators.required),
-    unit: new FormControl('', Validators.required),
-
-    category:  new FormControl('', Validators.required),
-
-    color:   new FormControl(''),
-    size:    new FormControl(''),
 
     dimensionLength: new FormControl(''),
     dimensionWidth: new FormControl(''),
@@ -48,15 +40,50 @@ export class ItemsNewComponent {
     ups:  new FormControl(''),
     //
     salePrice: new FormControl('0'),
-    purchasePrice: new FormControl('0')
+    purchasePrice: new FormControl('0'),
+    features: new FormArray([this.featureForm()]),
   });
 
-  constructor(private itemService: ItemService) {
+  featureForm = () => new FormGroup({
+    feature: new FormControl('', Validators.required),
+    option: new FormControl('', Validators.required) 
+  });
 
+  form = new FormGroup({
+    name: new FormControl('', Validators.required),
+    unit: new FormControl('', Validators.required),
+    category:  new FormControl('', Validators.required),
+    variants: new FormArray([this.variantForm()]),
+    features: new FormArray([])
+  });
+
+  get variants() {
+    return this.form.controls["variants"] as FormArray;
   }
+
+  get features() {
+    return this.form.controls["features"] as FormArray;
+  }
+
+  constructor(private itemService: ItemService) {}
 
   ngOnInit() {
     this.form.reset();
+  }
+
+  addFeature() {
+    this.features.push(new FormGroup({
+      feature: new FormControl('', Validators.required),
+      options: new FormControl([], Validators.required) 
+    }));
+  }
+
+  onFeatureChange(e) {
+    console.log(e);
+  }
+
+  onFeatureOptionChange(e) {
+
   }
 
   save() {

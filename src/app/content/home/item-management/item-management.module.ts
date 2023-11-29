@@ -11,10 +11,11 @@ import { ItemsEditComponent } from './items/items-edit/items-edit.component';
 import { BreadcrumbModule } from 'src/app/_layout/breadcrumb/breadcrumb.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryNewComponent } from './category/category-new/category-new.component';
-import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InputModule } from '../../partials/inputs/input.module';
 import { PartialsModule } from '../../partials/partials.module';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { CategoryEditComponent } from './category/category-edit/category-edit.co
     ReactiveFormsModule,
     NgbModalModule,
     InputModule,
-    PartialsModule
+    PartialsModule,
+    NgbModule,
+    NgSelectModule,
   ]
 })
 export class ItemManagementModule { }

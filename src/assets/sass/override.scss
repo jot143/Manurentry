@@ -4,8 +4,17 @@ form {
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 1rem !important;
+    &.vertical {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
     label {
       width: 100px;
+    }
+    .ng-select {
+      flex: 1;
+      margin-right: 1rem;
     }
     .form-control {
       flex: 1;
