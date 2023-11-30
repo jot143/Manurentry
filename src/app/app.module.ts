@@ -43,7 +43,7 @@ import { ThemeSettingsConfig } from './_layout/settings/theme-settings.config';
 import { VerticalnavComponent } from './_layout/navigation/verticalnav/verticalnav.component';
 import { environment } from '../environments/environment';
 import { routing } from './app.routing';
-import { HomeComponent } from './content/home/home.component';
+import { HomeComponent } from './content/home/dashboard/home.component';
 import { ToastrModule } from 'ngx-toastr';
 
 // Routing

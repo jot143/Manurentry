@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FeatureService } from 'src/services/feature.service';
 import { ItemService } from 'src/services/item.service';
 
 @Component({
@@ -65,10 +66,11 @@ export class ItemsNewComponent {
     return this.form.controls["features"] as FormArray;
   }
 
-  constructor(private itemService: ItemService) {}
+  constructor(private itemService: ItemService, private featureService: FeatureService) {}
 
   ngOnInit() {
     this.form.reset();
+    this.featureService.getAll();
   }
 
   addFeature() {

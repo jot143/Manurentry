@@ -83,6 +83,25 @@ const API: any = {
       url: "/admin/item/{{id}}",
     },
     //
+
+    //Features
+    getFeatures: {
+      requestType: "get",
+      url: "/admin/feature/index",
+    },
+    addFeature: {
+      requestType: "post",
+      url: "/admin/feature/create",
+    },
+    editFeature: {
+      requestType: "put",
+      url: "/admin/feature/{{id}}",
+    },
+    deleteFeature: {
+      requestType: "delete",
+      url: "/admin/feature/{{id}}",
+    },
+    //
   },
 
   defaultDomain: () => environment.API_URL,

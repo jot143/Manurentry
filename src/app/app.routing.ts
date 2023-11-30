@@ -2,7 +2,7 @@
 
 import { AuthGuard } from './_guards/auth.guard';
 import { ChangelogComponent } from './content/changelog/changelog.component';
-import { HomeComponent } from './content/home/home.component';
+import { HomeComponent } from './content/home/dashboard/home.component';
 import { LoginComponent } from './login';
 import { PrivateLayoutComponent } from './_layout/private-layout/private-layout.component';
 import { PublicLayoutComponent } from './_layout/public-layout/public-layout.component';
@@ -28,7 +28,8 @@ const appRoutes: Routes = [
       },
       { 
         path: 'item-management', 
-        loadChildren: () => import('./content/home/item-management/item-management.module').then(m => m.ItemManagementModule)},
+        loadChildren: () => import('./content/home/item-management/item-management.module').then(m => m.ItemManagementModule)
+      },
       { 
         path: 'logout', 
         component: LoginComponent
