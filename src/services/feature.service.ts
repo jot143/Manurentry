@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Feature } from 'src/controller/model/Feature';
 import { RequestService } from 'src/controller/utility/request.service';
 
@@ -7,7 +8,7 @@ import { RequestService } from 'src/controller/utility/request.service';
 })
 export class FeatureService {
 
-  features: Feature[] = [];
+  features = new BehaviorSubject<Feature[]>([]);
 
   constructor(private requestService: RequestService) { }
 
@@ -22,8 +23,7 @@ export class FeatureService {
   getAll() {
     const success = (value) => {
       if(value.status = 'OK') {
-        this.features = Feature.createFromArray(value.data);
-        console.log(this.features);
+        this.features.next(Feature.createFromArray(value.data));
       }
     }
     this.requestService.send("getFeatures", {}, success);

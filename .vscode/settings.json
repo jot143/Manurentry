@@ -4,6 +4,7 @@
         "devkit",
         "firebaseapp",
         "Firestore",
+        "mainlabel",
         "Toastr",
         "verticalnav"
     ]

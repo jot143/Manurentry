@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Category } from 'src/controller/model/Category';
 import { RequestService } from 'src/controller/utility/request.service';
 
@@ -7,7 +8,7 @@ import { RequestService } from 'src/controller/utility/request.service';
 })
 export class CategoryService {
 
-  categories: Category[] = [];
+  categories = new BehaviorSubject<Category[]>([]);
 
   constructor(private requestService: RequestService) { }
 
@@ -22,7 +23,7 @@ export class CategoryService {
   getAll() {
     const success = (value) => {
       if(value.status = 'OK') {
-        this.categories = Category.createFromArray(value.data);
+        this.categories.next(Category.createFromArray(value.data));
       }
     }
     this.requestService.send("getCategories", {}, success);

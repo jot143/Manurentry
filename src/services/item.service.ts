@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
 import { RequestService } from "../controller/utility/request.service";
 import { Item } from "src/controller/model/Item";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class ItemService {
 
-  items: Item[] = [];
+  items =  new BehaviorSubject<Item[]>([]);
 
   constructor(private requestService: RequestService) {}
 

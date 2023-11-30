@@ -2,8 +2,6 @@ import { ChangeDetectorRef, Component } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { CategoryNewComponent } from "./category-new/category-new.component";
 import { CategoryService } from "src/services/category.service";
-import { CategoryEditComponent } from "./category-edit/category-edit.component";
-import { Category } from "src/controller/model/Category";
 
 @Component({
   selector: "app-category",
@@ -41,7 +39,8 @@ export class CategoryComponent {
     modalRef.componentInstance.parent = null;
 
     modalRef.result.then((result) => {
-      this.categoryService.categories.push(result);
+      this.categoryService.categories.value.push(result)
+      this.categoryService.categories.next(this.categoryService.categories.value);
     });
   }
 

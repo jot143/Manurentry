@@ -50,29 +50,29 @@
                     <div class="col-md-8 col-12">
                         <div><b>Add Features</b><br /><br /></div>
                         <ng-container formArrayName="features">
-                            <ng-container *ngFor="let form of features.controls">
-                                <div class="row align-items-center" [formGroup]="form">
+                            <ng-container *ngFor="let form of featuresFormArray.controls; let i = index">
+                                <div class="row align-items-center mb-2" [formGroup]="form">
                                     <div class="col-md-4">
-                                        <ng-select [items]="['color', 'size']" bindLabel="Feature"
-                                            formControlName="feature" (change)="onFeatureChange($event)">
+                                        <ng-select [items]="features" bindLabel="name" formControlName="feature"
+                                            (change)="onFeatureChange($event)">
                                         </ng-select>
                                     </div>
                                     <div class="col-md-7">
-                                        <ng-select [items]="['color', 'size']" bindLabel="Feature"
+                                        <ng-select [items]="featureOptions(form)" bindLabel="option"
                                             formControlName="options" (change)="onFeatureOptionChange($event)"
                                             [multiple]="true">
                                         </ng-select>
                                     </div>
                                     <div class="col-md-1">
-                                        <a [routerLink]="" class="danger delete mr-1 mrless"><i
-                                                class="la la-trash-o"></i></a>
+                                        <a [routerLink]="" class="danger delete mr-1 mrless"
+                                            (click)="deleteFeature(i)"><i class="la la-trash-o"></i></a>
                                     </div>
                                 </div>
                             </ng-container>
                         </ng-container>
                         <br />
 
-                        <div>
+                        <div *ngIf="featuresFormArray.length < featureService.features.value.length">
                             <a [routerLink]="" class="success mr-1 mrless" (click)="addFeature()"><i
                                     class="feather ft-plus-circle"></i></a>
                             Add More Feature
@@ -80,9 +80,12 @@
                     </div>
                 </div>
                 <hr />
+
                 <ng-container formArrayName="variants">
                     <ng-container *ngFor="let variant of variants.controls; let i = index">
                         <ng-container [formGroup]="variant">
+
+                            {{variant?.features?.value}}
                             <div class="row">
                                 <div class="col-md-2 col-12">
                                     <div class="form-group vertical">
@@ -217,6 +220,7 @@
                         </ng-container>
                     </ng-container>
                 </ng-container>
+
                 <hr />
                 <div class="row mt-2">
                     <div class="col-md-8 col-12 d-flex justify-content-start" style="padding-right: 30px;">
