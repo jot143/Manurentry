@@ -1,6 +1,8 @@
 import { environment } from 'src/environments/environment';
 import { Media } from './Media';
 import { Model } from './Model';
+import { Category } from './Category';
+import { ItemVariants } from './ItemVariants';
 
 function ArrayDecorator(className: string) {
   return function(target: any, key: any) {
@@ -20,6 +22,13 @@ export class Item extends Model {
   id!: number;
   name = "";
   slug = "";
+  unit = "";
+
+  category = new Category();
+
+  @ArrayDecorator('ItemVariants')
+  itemVariants: ItemVariants[] = [];
+
   createdAt!: string;
   updatedAt!: string;
   deletedAt!: string;

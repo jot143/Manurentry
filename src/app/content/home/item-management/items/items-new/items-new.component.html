@@ -24,6 +24,7 @@
                                 <option value="" selected>Select Unit</option>
                                 <option value="pcs">pcs</option>
                                 <option value="box">box</option>
+                                <option value="pair">pair</option>
                                 <option value="cm">cm</option>
                                 <option value="dz">dz</option>
                                 <option value="ft">ft</option>
@@ -59,7 +60,7 @@
                                     </div>
                                     <div class="col-md-7">
                                         <ng-select [items]="featureOptions(form)" bindLabel="option"
-                                            formControlName="options" (change)="onFeatureOptionChange($event)"
+                                            formControlName="options" (change)="onFeatureOptionChange()"
                                             [multiple]="true">
                                         </ng-select>
                                     </div>
@@ -85,7 +86,16 @@
                     <ng-container *ngFor="let variant of variants.controls; let i = index">
                         <ng-container [formGroup]="variant">
 
-                            {{variant?.features?.value}}
+                            <div class="row">
+                                <div class="col-md-2 col-12 d-flex" >
+                                    <div *ngFor="let feature of variant.controls.features.controls" class="my-1 mr-2">
+                                        <div>
+                                            <b style="text-transform: capitalize; font-size: 1.2rem;">{{feature.value.feature}}: </b> {{feature.value.option}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-md-2 col-12">
                                     <div class="form-group vertical">
@@ -109,6 +119,7 @@
                                                 name="dimensionUnit">
                                                 <option value="pcs">pcs</option>
                                                 <option value="box">box</option>
+                                                <option value="pair">pair</option>
                                                 <option value="cm" selected>cm</option>
                                                 <option value="dz">dz</option>
                                                 <option value="ft">ft</option>
@@ -135,6 +146,7 @@
                                                     name="unit">
                                                     <option value="pcs">pcs</option>
                                                     <option value="box">box</option>
+                                                    <option value="pair">pair</option>
                                                     <option value="cm" selected>cm</option>
                                                     <option value="dz">dz</option>
                                                     <option value="ft">ft</option>
@@ -178,7 +190,7 @@
                             <div class="row">
                                 <div class="col-md-2 col-12">
                                     <div class="form-group vertical">
-                                        <label>EAN*</label>
+                                        <label>EAN</label>
                                         <div class="d-flex w-100">
                                             <input type="text" name="ean" formControlName="ean" class="form-control">
                                         </div>
@@ -186,7 +198,7 @@
                                 </div>
                                 <div class="col-md-2 col-12">
                                     <div class="form-group vertical">
-                                        <label>HSN*</label>
+                                        <label>HSN</label>
                                         <div class="d-flex w-100">
                                             <input type="text" name="hsn" formControlName="hsn" class="form-control">
                                         </div>
@@ -218,10 +230,11 @@
                                 </div>
                             </div>
                         </ng-container>
+                        <hr />
                     </ng-container>
                 </ng-container>
 
-                <hr />
+               
                 <div class="row mt-2">
                     <div class="col-md-8 col-12 d-flex justify-content-start" style="padding-right: 30px;">
                         <button type="submit" class="btn btn-primary glow send d-lg-flex" (click)="save()">

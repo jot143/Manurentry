@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { RequestService } from "../controller/utility/request.service";
-import { Item } from "src/controller/model/Item";
 import { BehaviorSubject } from "rxjs";
+import { Injectable } from "@angular/core";
+import { Item } from "src/controller/model/Item";
+import { RequestService } from "../controller/utility/request.service";
 
 @Injectable({
   providedIn: "root",
@@ -26,7 +26,7 @@ export class ItemService {
   getAll() {
     const success = (value) => {
       if ((value.status = "OK")) {
-        this.items = Item.createFromArray(value.data);
+        this.items.next(Item.createFromArray(value.data));
       }
     };
     this.requestService.send("getItems", {}, success);

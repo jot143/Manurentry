@@ -1,9 +1,12 @@
-import { Component } from "@angular/core";
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Subscription } from "rxjs";
+
+import { Component } from "@angular/core";
 import { Feature } from "src/controller/model/Feature";
 import { FeatureService } from "src/services/feature.service";
 import { ItemService } from "src/services/item.service";
+import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-items-new",
@@ -37,15 +40,15 @@ export class ItemsNewComponent {
       weight: new FormControl(""),
       weightUnit: new FormControl("cm"),
       //
-      ean: new FormControl("", Validators.required),
-      hsn: new FormControl("", Validators.required),
+      hsn: new FormControl(""),
+      ean: new FormControl(""),
       mpn: new FormControl(""),
       isbn: new FormControl(""),
       ups: new FormControl(""),
       //
       salePrice: new FormControl("0"),
       purchasePrice: new FormControl("0"),
-      features: new FormArray([this.featureForm()]),
+      features: new FormArray([]),
     });
 
   featureForm = (data = { feature: "", option: "" }) =>
@@ -75,7 +78,9 @@ export class ItemsNewComponent {
 
   constructor(
     private itemService: ItemService,
-    public featureService: FeatureService
+    public featureService: FeatureService,
+    private toastr: ToastrService,
+    private navCtrl: Router
   ) {}
 
   ngOnInit() {
@@ -109,6 +114,7 @@ export class ItemsNewComponent {
 
   deleteFeature(i) {
     this.form.controls.features.removeAt(i);
+    this.onFeatureOptionChange();
   }
 
   featureOptions(form) {
@@ -137,14 +143,12 @@ export class ItemsNewComponent {
     if (rows.length == 1) {
       const currentRow = rows[0];
       for (let currentOption of currentRow) {
-        previous = [
-          [
+        previous.push([
             {
               feature: currentOption.feature,
               option: currentOption.option,
             },
-          ],
-        ];
+          ]);
       }
     } else {
       for (let x = 0; x < rows.length - 1; x++) {
@@ -189,7 +193,7 @@ export class ItemsNewComponent {
     return previous;
   }
 
-  onFeatureOptionChange(e) {
+  onFeatureOptionChange() {
     let featureRows = [];
     for (let formArray of this.featuresFormArray.value) {
       const row = [];
@@ -207,36 +211,25 @@ export class ItemsNewComponent {
   }
 
   populateVariants(variants) {
-    const variantsForm = [];
+
     for (let i = 0; i < variants.length; i++) {
-      console.log(this.variants)
-      // if (!this.form.controls.variants.at(i)) {
-        // this.form.controls.variants[i] = this.variantForm();
-      // }
+      if (!this.variants.controls[i]) {
+        this.form.controls.variants.push(this.variantForm());
+      }
+      
+      this.form.controls.variants.controls[i].controls.features.clear();
 
-      // const variant = this.form.controls.variants.at(i);
-
-      // const featureForms = variants[i].map((item) => {
-      //   return this.featureForm({
-      //     feature: item.feature,
-      //     option: item.option,
-      //   });
-      // })
-      // console.log(featureForms);
-
-      // variant.patchValue({
-      //   features: featureForms
-      // });
-
-      // setTimeout(() => {
-      //   console.log(variant);
-      // }, 100);
-   
-      // variantsForm.push(variant);
+      for(let feature of variants[i]) {
+        this.form.controls.variants.controls[i].controls.features.push(this.featureForm({
+          feature: feature.feature,
+          option: feature.option,
+        }));
+      }
     }
 
-    // console.log(variantsForm);
-    // this.form.controls.variants = new FormArray(variantsForm);
+    while(this.form.controls.variants.length > variants.length) {
+      this.form.controls.variants.removeAt(this.form.controls.variants.length  - 1);
+    }
   }
 
   save() {
@@ -248,9 +241,13 @@ export class ItemsNewComponent {
 
     const success = (value) => {
       if (value.status == "OK") {
+        this.toastr.success(value.message);
+        this.navCtrl.navigateByUrl('/home/item-management');
       }
     };
 
+    const data = this.form.value;
+    delete data.features;
     this.itemService.addItem(this.form.value, success);
   }
 }
