@@ -3,8 +3,8 @@
 export const environment = {
   production: true,
   APP_NAME: 'Manuentry',
-  API_URL: 'http://localhost:50000',
-  ASSETS_URL: 'http://localhost:50000',
+  API_URL: 'https://spartan-backend.rcubinity.com',
+  ASSETS_URL: 'https://spartan-backend.rcubinity.com',
   firebase: {
     apiKey: 'AIzaSyAvHtu5rrqKSZQg75R2MYqlNgGdMKy2YR4',
     projectId: 'modern-admin-8453e',
