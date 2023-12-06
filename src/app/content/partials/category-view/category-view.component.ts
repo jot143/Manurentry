@@ -1,9 +1,10 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { Category } from 'src/controller/model/Category';
-import { CategoryNewComponent } from '../../home/item-management/category/category-new/category-new.component';
 import { CategoryEditComponent } from '../../home/item-management/category/category-edit/category-edit.component';
-import { CategoryService } from 'src/services/category.service';
+import { CategoryNewComponent } from '../../home/item-management/category/category-new/category-new.component';
+import { CategoryService } from 'src/services/item/category.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-category-view',

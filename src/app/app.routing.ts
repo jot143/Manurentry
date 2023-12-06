@@ -31,6 +31,10 @@ const appRoutes: Routes = [
         loadChildren: () => import('./content/home/item-management/item-management.module').then(m => m.ItemManagementModule)
       },
       { 
+        path: 'raw-item-management', 
+        loadChildren: () => import('./content/home/raw-item-management/raw-item-management.module').then(m => m.RawItemManagementModule)
+      },
+      { 
         path: 'logout', 
         component: LoginComponent
       },

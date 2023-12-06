@@ -1,7 +1,7 @@
 import { BehaviorSubject } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Item } from "src/controller/model/Item";
-import { RequestService } from "../controller/utility/request.service";
+import { RequestService } from "../../controller/utility/request.service";
 
 @Injectable({
   providedIn: "root",

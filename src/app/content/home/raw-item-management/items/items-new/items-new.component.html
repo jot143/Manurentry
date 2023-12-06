@@ -1,0 +1,249 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row mb-1">
+            <app-breadcrumb class="col-12" [breadcrumb]="breadcrumb">
+                <div class="d-flex justify-content-end">
+                </div>
+            </app-breadcrumb>
+        </div>
+        <div class="content-body">
+            <form class="form-body" [formGroup]="form">
+                <div class="row">
+                    <div class="col-md-8 col-12">
+                        <div class="form-group">
+                            <label>Name*</label>
+                            <input type="text" name="name" formControlName="name" class="form-control">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label>Unit*</label>
+                            <select class="custom-select form-control" placeholder="Select Unit" formControlName="unit"
+                                name="unit">
+                                <option value="" selected>Select Unit</option>
+                                <option value="pcs">pcs</option>
+                                <option value="box">box</option>
+                                <option value="pair">pair</option>
+                                <option value="cm">cm</option>
+                                <option value="dz">dz</option>
+                                <option value="ft">ft</option>
+                                <option value="g">g</option>
+                                <option value="in">in</option>
+                                <option value="kg">kg</option>
+                                <option value="km">km</option>
+                                <option value="lb">lb</option>
+                                <option value="ml">ml</option>
+                                <option value="mg">mg</option>
+                                <option value="m">m</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category*</label>
+                            <app-select-nested class="form-control" formControlName="category" style="width: 100%;"
+                                selectKey="id" selectLabel="name"></app-select-nested>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8 col-12">
+                        <div><b>Add Features</b><br /><br /></div>
+                        <ng-container formArrayName="features">
+                            <ng-container *ngFor="let form of featuresFormArray.controls; let i = index">
+                                <div class="row align-items-center mb-2" [formGroup]="form">
+                                    <div class="col-md-4">
+                                        <ng-select [items]="features" bindLabel="name" formControlName="feature"
+                                            (change)="onFeatureChange($event)">
+                                        </ng-select>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <ng-select [items]="featureOptions(form)" bindLabel="option"
+                                            formControlName="options" (change)="onFeatureOptionChange()"
+                                            [multiple]="true">
+                                        </ng-select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a [routerLink]="" class="danger delete mr-1 mrless"
+                                            (click)="deleteFeature(i)"><i class="la la-trash-o"></i></a>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <br />
+
+                        <div *ngIf="featuresFormArray.length < featureService.features.value.length">
+                            <a [routerLink]="" class="success mr-1 mrless" (click)="addFeature()"><i
+                                    class="feather ft-plus-circle"></i></a>
+                            Add More Feature
+                        </div>
+                    </div>
+                </div>
+                <hr />
+
+                <ng-container formArrayName="variants">
+                    <ng-container *ngFor="let variant of variants.controls; let i = index">
+                        <ng-container [formGroup]="variant">
+
+                            <div class="row">
+                                <div class="col-md-2 col-12 d-flex" >
+                                    <div *ngFor="let feature of variant.controls.features.controls" class="my-1 mr-2">
+                                        <div>
+                                            <b style="text-transform: capitalize; font-size: 1.2rem;">{{feature.value.feature}}: </b> {{feature.value.option}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2 col-12">
+                                    <div class="form-group vertical">
+                                        <label>SKU*</label>
+                                        <div class="d-flex w-100">
+                                            <input type="text" name="sku" formControlName="sku" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-12">
+                                    <div class="form-group vertical">
+                                        <label>Dimension</label>
+                                        <div class="input-group">
+                                            <input type="text" name="dimensionLength" placeholder="Length"
+                                                formControlName="dimensionLength" class="form-control">
+                                            <input type="text" name="dimensionWidth" placeholder="Width"
+                                                formControlName="dimensionWidth" class="form-control">
+                                            <input type="text" name="dimensionHeight" placeholder="Height"
+                                                formControlName="dimensionHeight" class="form-control">
+                                            <select class="custom-select form-control" formControlName="dimensionUnit"
+                                                name="dimensionUnit">
+                                                <option value="pcs">pcs</option>
+                                                <option value="box">box</option>
+                                                <option value="pair">pair</option>
+                                                <option value="cm" selected>cm</option>
+                                                <option value="dz">dz</option>
+                                                <option value="ft">ft</option>
+                                                <option value="g">g</option>
+                                                <option value="in">in</option>
+                                                <option value="kg">kg</option>
+                                                <option value="km">km</option>
+                                                <option value="lb">lb</option>
+                                                <option value="ml">ml</option>
+                                                <option value="mg">mg</option>
+                                                <option value="m">m</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-12">
+                                    <div class="form-group vertical">
+                                        <label>Weight</label>
+                                        <div class="input-group">
+                                            <input type="text" name="weight" formControlName="weight"
+                                                class="form-control">
+                                            <div class="input-group-append">
+                                                <select class="form-control" formControlName="weightUnit" value="cm"
+                                                    name="unit">
+                                                    <option value="pcs">pcs</option>
+                                                    <option value="box">box</option>
+                                                    <option value="pair">pair</option>
+                                                    <option value="cm" selected>cm</option>
+                                                    <option value="dz">dz</option>
+                                                    <option value="ft">ft</option>
+                                                    <option value="g">g</option>
+                                                    <option value="in">in</option>
+                                                    <option value="kg">kg</option>
+                                                    <option value="km">km</option>
+                                                    <option value="lb">lb</option>
+                                                    <option value="ml">ml</option>
+                                                    <option value="mg">mg</option>
+                                                    <option value="m">m</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-12">
+                                    <div class="row w-100">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group vertical">
+                                                <label>Selling Price</label>
+                                                <div class="d-flex w-100">
+                                                    <input type="text" name="salePrice" formControlName="salePrice"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group vertical">
+                                                <label>Purchasing</label>
+                                                <div class="d-flex w-100">
+                                                    <input type="text" name="purchasePrice"
+                                                        formControlName="purchasePrice" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2 col-12">
+                                    <div class="form-group vertical">
+                                        <label>EAN</label>
+                                        <div class="d-flex w-100">
+                                            <input type="text" name="ean" formControlName="ean" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-12">
+                                    <div class="form-group vertical">
+                                        <label>HSN</label>
+                                        <div class="d-flex w-100">
+                                            <input type="text" name="hsn" formControlName="hsn" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-12">
+                                    <div class="form-group vertical">
+                                        <label>UPS</label>
+                                        <div class="d-flex w-100">
+                                            <input type="text" name="ups" formControlName="ups" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-12">
+                                    <div class="form-group vertical">
+                                        <label>MPN</label>
+                                        <div class="d-flex w-100">
+                                            <input type="text" name="mpn" formControlName="mpn" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-12">
+                                    <div class="form-group vertical">
+                                        <label>ISBN</label>
+                                        <div class="d-flex w-100">
+                                            <input type="text" name="isbn" formControlName="isbn" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <hr />
+                    </ng-container>
+                </ng-container>
+
+               
+                <div class="row mt-2">
+                    <div class="col-md-8 col-12 d-flex justify-content-start" style="padding-right: 30px;">
+                        <button type="submit" class="btn btn-primary glow send d-lg-flex" (click)="save()">
+                            <i class="ficon feather ft-play"></i>&nbsp;&nbsp;
+                            <span class="d-none d-lg-block mx-50">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

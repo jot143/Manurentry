@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { Item } from 'src/controller/model/Item';
-import { ItemService } from 'src/services/item/item.service';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { RawItemService } from 'src/services/raw-item/item-raw.service';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-items',
@@ -15,20 +13,20 @@ export class ItemsComponent {
   selected = [];
   public config: PerfectScrollbarConfigInterface = { };
 
-  constructor(private navCtrl: Router, public service: ItemService) {
+  constructor(private navCtrl: Router, public service: RawItemService) {
 
   }
 
   breadcrumb = {
-    'mainlabel': 'Items',
+    'mainlabel': 'Raw Items',
     'links': [
       {
-        'name': 'Item Management',
+        'name': 'Raw Item Management',
         'isLink': true,
-        'link': '/home/item-management'
+        'link': '/home/raw-item-management'
       },
       {
-        'name': 'Items',
+        'name': 'Raw Items',
         'isLink': false
       }
     ]
@@ -42,7 +40,7 @@ export class ItemsComponent {
   }
 
   gotoNewItemPage() {
-    this.navCtrl.navigateByUrl('/home/item-management/items-new');
+    this.navCtrl.navigateByUrl('/home/raw-item-management/items-new');
   }
 
   // Table 

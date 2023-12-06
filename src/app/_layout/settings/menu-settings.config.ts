@@ -51,6 +51,23 @@ export const MenuSettingsConfig: MenuConfig = {
           ]
         }
       },
+      {
+        title: 'Raw Item Management',
+        icon: 'la-cart-plus',
+        page: 'null',
+        submenu: {
+          items: [
+            {
+              title: 'Raw Items',
+              page: '/home/raw-item-management/items'
+            },
+            {
+              title: 'Category',
+              page: '/home/raw-item-management/category'
+            }
+          ]
+        }
+      },
       // {
       //   title: 'Changelog',
       //   icon: 'la-file',

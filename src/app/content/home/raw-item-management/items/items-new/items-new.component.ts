@@ -3,7 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Component } from "@angular/core";
 import { Feature } from "src/controller/model/Feature";
 import { FeatureService } from "src/services/item/feature.service";
-import { ItemService } from "src/services/item/item.service";
+import { RawItemService } from "src/services/raw-item/item-raw.service";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { ToastrService } from "ngx-toastr";
@@ -15,15 +15,15 @@ import { ToastrService } from "ngx-toastr";
 })
 export class ItemsNewComponent {
   breadcrumb = {
-    mainlabel: "New Items",
+    mainlabel: "New Raw Items",
     links: [
       {
-        name: "Item Management",
+        name: "Raw Item Management",
         isLink: true,
-        link: "/home/item-management",
+        link: "/home/raw-item-management",
       },
       {
-        name: "New Items",
+        name: "New Raw Items",
         isLink: false,
       },
     ],
@@ -77,7 +77,7 @@ export class ItemsNewComponent {
   featuresSubscription = new Subscription();
 
   constructor(
-    private itemService: ItemService,
+    private itemService: RawItemService,
     public featureService: FeatureService,
     private toastr: ToastrService,
     private navCtrl: Router

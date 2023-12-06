@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Category } from 'src/controller/model/Category';
-import { CategoryService } from 'src/services/item/category.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { RawCategory } from 'src/controller/model/RawCategory';
+import { RawCategoryService } from 'src/services/raw-item/category-raw.service';
 
 @Component({
   selector: 'app-category-new',
@@ -12,14 +12,14 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CategoryNewComponent {
 
-  @Input() public parent: Category | null;
+  @Input() public parent: RawCategory | null;
 
   form = new FormGroup({
     parentCategory:  new FormControl(''),
     name:  new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
 
-  constructor(public activeModal: NgbActiveModal, private categoryService: CategoryService) {}
+  constructor(public activeModal: NgbActiveModal, private categoryService: RawCategoryService) {}
 
   ngOnInit() {
     this.form.patchValue({

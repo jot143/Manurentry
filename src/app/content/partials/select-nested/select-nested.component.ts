@@ -5,7 +5,7 @@ import {
   FormGroupDirective,
   NgControl,
 } from "@angular/forms";
-import { CategoryService } from "src/services/category.service";
+import { CategoryService } from "src/services/item/category.service";
 
 export const NOOP_VALUE_ACCESSOR: ControlValueAccessor = {
   writeValue(): void {},

@@ -102,6 +102,44 @@ const API: any = {
       url: "/admin/feature/{{id}}",
     },
     //
+
+    //Raw Categories
+    getRawCategories: {
+      requestType: "get",
+      url: "/admin/raw-category/index",
+    },
+    addRawCategory: {
+      requestType: "post",
+      url: "/admin/raw-category/create",
+    },
+    editRawCategory: {
+      requestType: "put",
+      url: "/admin/raw-category/{{id}}",
+    },
+    deleteRawCategory: {
+      requestType: "delete",
+      url: "/admin/raw-category/{{id}}",
+    },
+    //
+
+    //Items
+    getRawItems: {
+      requestType: "get",
+      url: "/admin/raw-item/index",
+    },
+    addRawItem: {
+      requestType: "post",
+      url: "/admin/raw-item/create",
+    },
+    editRawItem: {
+      requestType: "put",
+      url: "/admin/raw-item/{{id}}",
+    },
+    deleteRawItem: {
+      requestType: "delete",
+      url: "/admin/raw-item/{{id}}",
+    },
+    //
   },
 
   defaultDomain: () => environment.API_URL,

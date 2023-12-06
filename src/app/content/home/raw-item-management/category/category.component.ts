@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component } from "@angular/core";
 
 import { CategoryNewComponent } from "./category-new/category-new.component";
-import { CategoryService } from "src/services/item/category.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { RawCategoryService } from "src/services/raw-item/category-raw.service";
 
 @Component({
   selector: "app-category",
@@ -11,15 +11,15 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 })
 export class CategoryComponent {
   breadcrumb = {
-    mainlabel: "Category",
+    mainlabel: "Raw Category",
     links: [
       {
-        name: "Item Management",
+        name: "Raw Item Management",
         isLink: true,
-        link: "/home/item-management",
+        link: "/home/raw-item-management",
       },
       {
-        name: "Category",
+        name: "Raw Category",
         isLink: false,
       },
     ],
@@ -27,7 +27,7 @@ export class CategoryComponent {
 
   constructor(
     private modalService: NgbModal,
-    public categoryService: CategoryService,
+    public categoryService: RawCategoryService,
     private cd: ChangeDetectorRef
   ) {}
 
@@ -40,8 +40,8 @@ export class CategoryComponent {
     modalRef.componentInstance.parent = null;
 
     modalRef.result.then((result) => {
-      this.categoryService.categories.value.push(result)
-      this.categoryService.categories.next(this.categoryService.categories.value);
+      this.categoryService.rawCategories.value.push(result)
+      this.categoryService.rawCategories.next(this.categoryService.rawCategories.value);
     });
   }
 
