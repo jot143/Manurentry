@@ -1,11 +1,6 @@
-import { ChangeDetectorRef, Component, ContentChild, Input, Optional, Self, ViewChild } from "@angular/core";
-import {
-  ControlContainer,
-  ControlValueAccessor,
-  FormGroupDirective,
-  NgControl,
-} from "@angular/forms";
-import { CategoryService } from "src/services/item/category.service";
+import { ChangeDetectorRef, Component, Input, Optional, Self, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { RawCategoryService } from 'src/services/raw-item/category-raw.service';
 
 export const NOOP_VALUE_ACCESSOR: ControlValueAccessor = {
   writeValue(): void {},
@@ -14,17 +9,11 @@ export const NOOP_VALUE_ACCESSOR: ControlValueAccessor = {
 };
 
 @Component({
-  selector: "app-select-nested",
-  templateUrl: "./select-nested.component.html",
-  styleUrls: ["./select-nested.component.css"],
-  viewProviders: [
-    {
-      provide: ControlContainer,
-      useExisting: FormGroupDirective,
-    },
-  ],
+  selector: 'app-select-raw-category',
+  templateUrl: './select-raw-category.component.html',
+  styleUrls: ['./select-raw-category.component.css']
 })
-export class SelectNestedComponent implements ControlValueAccessor {
+export class SelectRawCategoryComponent {
   @Input() formControlName = "";
   @Input() placeholder = "";
 
@@ -33,7 +22,7 @@ export class SelectNestedComponent implements ControlValueAccessor {
 
   @ViewChild('input') input: any;
 
-  constructor(@Self() @Optional() public ngControl: NgControl,  public categoryService: CategoryService,  private cd: ChangeDetectorRef) {
+  constructor(@Self() @Optional() public ngControl: NgControl,  public categoryService: RawCategoryService,  private cd: ChangeDetectorRef) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = NOOP_VALUE_ACCESSOR;
     }

@@ -1,0 +1,32 @@
+input {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    border: none;
+    width: 100%;
+}
+
+input:focus ~ .drop-down {
+    display: block;
+}
+
+.drop-down:focus, .drop-down:active {
+    display: block;
+}
+
+.drop-down {
+    display: none;
+    position: absolute;
+    z-index: 1049;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #babfc7;
+    border-radius: 0.25rem;
+    max-height: 400px;
+    overflow-y: auto;
+}

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectNestedComponent } from './select-nested.component';
+import { SelectCategoryComponent } from './select-category.component';
 
-describe('SelectNestedComponent', () => {
-  let component: SelectNestedComponent;
-  let fixture: ComponentFixture<SelectNestedComponent>;
+describe('SelectCategoryComponent', () => {
+  let component: SelectCategoryComponent;
+  let fixture: ComponentFixture<SelectCategoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectNestedComponent ]
+      declarations: [ SelectCategoryComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SelectNestedComponent);
+    fixture = TestBed.createComponent(SelectCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
