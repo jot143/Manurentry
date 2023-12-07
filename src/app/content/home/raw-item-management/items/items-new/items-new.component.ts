@@ -233,7 +233,6 @@ export class ItemsNewComponent {
   }
 
   save() {
-    console.log(this.form.value);
     this.form.markAllAsTouched();
     if (this.form.invalid) {
       return;
