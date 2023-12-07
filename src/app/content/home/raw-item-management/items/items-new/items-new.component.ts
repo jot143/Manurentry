@@ -242,7 +242,7 @@ export class ItemsNewComponent {
     const success = (value) => {
       if (value.status == "OK") {
         this.toastr.success(value.message);
-        this.navCtrl.navigateByUrl('/home/item-management');
+        this.navCtrl.navigateByUrl('/home/raw-item-management');
       }
     };
 
