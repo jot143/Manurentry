@@ -28,13 +28,17 @@
                     <div class="col-md-4 col-12">
                         <div class="form-group">
                             <label>City*</label>
-                            <input type="text" name="city" formControlName="city" class="form-control">
+                            <select name="city" formControlName="city" class="form-control">
+                                <option *ngFor="let city of coreService.cities | async" [value]="city.id">{{city.name}}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-4 col-12">
                         <div class="form-group">
                             <label>State*</label>
-                            <input type="text" name="province" formControlName="province" class="form-control">
+                            <select name="province" formControlName="province" class="form-control">
+                                <option *ngFor="let province of coreService.provinces | async"  [value]="province.id">{{province.name}}</option>
+                            </select>
                         </div>
                     </div>
                 </div>  
@@ -42,7 +46,9 @@
                     <div class="col-md-4 col-12">
                         <div class="form-group">
                             <label>Country*</label>
-                            <input type="text" name="country" formControlName="country" class="form-control">
+                            <select name="country" formControlName="country" class="form-control">
+                                <option *ngFor="let country of coreService.countries | async" [value]="country.id">{{country.name}}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-4 col-12">

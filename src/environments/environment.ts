@@ -9,6 +9,7 @@ export const environment = {
   APP_NAME: 'Manuentry',
   API_URL: 'http://localhost:50000',
   ASSETS_URL: 'http://localhost:50000',
+  CORE_URL: 'http://localhost:50000/common/core',
   firebase: {
     apiKey: 'AIzaSyAvHtu5rrqKSZQg75R2MYqlNgGdMKy2YR4',
     projectId: 'modern-admin-8453e',

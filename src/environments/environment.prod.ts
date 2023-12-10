@@ -5,6 +5,7 @@ export const environment = {
   APP_NAME: 'Manuentry',
   API_URL: 'https://spartan-backend.rcubinity.com',
   ASSETS_URL: 'https://spartan-backend.rcubinity.com',
+  CORE_URL: 'https://spartan-backend.rcubinity.com/common/core',
   firebase: {
     apiKey: 'AIzaSyAvHtu5rrqKSZQg75R2MYqlNgGdMKy2YR4',
     projectId: 'modern-admin-8453e',

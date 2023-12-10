@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CoreService } from 'src/controller/service/core.service';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { Router } from '@angular/router';
 import { WarehouseService } from 'src/services/inventory/warehouse.service';
@@ -37,6 +38,7 @@ export class WarehouseComponent {
   }
 
   ngOnDestroy() {
+    
   }
 
   newWarehouse() {

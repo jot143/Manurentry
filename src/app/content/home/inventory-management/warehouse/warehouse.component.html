@@ -36,7 +36,25 @@
 
                 <ngx-datatable-column name="Name" [minWidth]="140" [maxWidth]="300">
                     <ng-template ngx-datatable-cell-template let-row="row">
-                        {{row.name}} ({{row.unit}})
+                        {{row.name}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Address" [minWidth]="140" [maxWidth]="300">
+                    <ng-template ngx-datatable-cell-template let-row="row">
+                        {{row.address.address}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="City" [minWidth]="140" [maxWidth]="300">
+                    <ng-template ngx-datatable-cell-template let-row="row">
+                        {{row.address.city.name}}, {{row.address.province.name}},  {{row.address.country.name}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Pincode" [minWidth]="140" [maxWidth]="300">
+                    <ng-template ngx-datatable-cell-template let-row="row">
+                        {{row.address.postalCode}}
                     </ng-template>
                 </ngx-datatable-column>
                

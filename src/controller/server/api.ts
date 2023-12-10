@@ -2,6 +2,26 @@ import { environment } from "src/environments/environment";
 
 const API: any = {
   endpoints: {
+
+    //core
+    countryIndex: {
+      requestType: 'get',
+      url: '/country/index',
+      domain: environment.CORE_URL
+    },
+    provinceIndex: {
+      requestType: 'get',
+      url: '/country/1/province/index',
+      domain: environment.CORE_URL
+    },
+    cityIndex: {
+      requestType: 'get',
+      url: '/province/1/city/index',
+      domain: environment.CORE_URL
+    },
+
+
+
     // Auth Process
     login: {
       requestType: "post",

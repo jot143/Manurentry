@@ -36,10 +36,11 @@ export class StoreComponent {
   }
 
   ngOnDestroy() {
+    
   }
 
   newStore() {
-
+    this.navCtrl.navigateByUrl('/home/inventory-management/store-new');
   }
 
   // Table 

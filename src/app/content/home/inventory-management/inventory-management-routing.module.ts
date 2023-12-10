@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InventoryComponent } from './inventory/inventory.component';
 import { NgModule } from '@angular/core';
 import { StoreComponent } from './store/store.component';
+import { StoreNewComponent } from './store/store-new/store-new.component';
 import { WarehouseComponent } from './warehouse/warehouse.component';
 import { WarehouseNewComponent } from './warehouse/warehouse-new/warehouse-new.component';
 
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'store',
     component: StoreComponent
+  },
+  {
+    path: 'store-new',
+    component: StoreNewComponent
   }
 ];
 

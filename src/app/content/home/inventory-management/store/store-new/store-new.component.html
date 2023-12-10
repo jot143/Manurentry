@@ -1,1 +1,40 @@
-<p>store-new works!</p>
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row mb-1">
+            <app-breadcrumb class="col-12" [breadcrumb]="breadcrumb">
+                <div class="d-flex justify-content-end">
+                </div>
+            </app-breadcrumb>
+        </div>
+        <div class="content-body">
+            <form class="form-body" [formGroup]="form">
+                <div class="row">
+                    <div class="col-md-8 col-12">
+                        <div class="form-group">
+                            <label>Name*</label>
+                            <input type="text" name="name" formControlName="name" class="form-control">
+                        </div>
+                    </div>
+                </div>          
+                <div class="row">
+                    <div class="col-md-8 col-12">
+                        <div class="form-group">
+                            <label>Warehouse*</label>
+                            <select name="city" formControlName="warehouse" class="form-control">
+                                <option *ngFor="let warehouse of warehouseService.warehouses | async" [value]="warehouse.id">{{warehouse.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>  
+                <div class="row mt-2">
+                    <div class="col-md-8 col-12 d-flex justify-content-start" style="padding-right: 30px;">
+                        <button type="submit" class="btn btn-primary glow send d-lg-flex" (click)="save()">
+                            <i class="ficon feather ft-play"></i>&nbsp;&nbsp;
+                            <span class="d-none d-lg-block mx-50">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
