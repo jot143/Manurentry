@@ -1,16 +1,6 @@
 import { Model } from './Model';
 import { ItemVariantFeature } from './ItemVariantFeature';
-
-function ArrayDecorator(className: string) {
-  return function(target: any, key: any) {
-
-    if(!target.constructor.prototype['_array_variable_type']) {
-      target.constructor.prototype['_array_variable_type'] = {};
-    }
-    target.constructor.prototype['_array_variable_type'][key] = className;
-  }
-}
-
+import { ArrayDecorator } from '../decorator/arrayDecorator.dec';
 
 export class ItemVariants extends Model {
 

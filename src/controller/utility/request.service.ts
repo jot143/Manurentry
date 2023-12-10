@@ -1,7 +1,6 @@
 import API from '../server/api';
 import { HttpClient, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Request } from './Request';
 import { RequestLoader } from './RequestLoader';
 import { SpinnerService } from './spinner.service';
 import { ToastrService } from 'ngx-toastr';

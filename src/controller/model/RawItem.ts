@@ -3,17 +3,7 @@ import { Media } from './Media';
 import { Model } from './Model';
 import { RawCategory } from './RawCategory';
 import { RawItemVariants } from './RawItemVariants';
-
-function ArrayDecorator(className: string) {
-  return function(target: any, key: any) {
-
-    if(!target.constructor.prototype['_array_variable_type']) {
-      target.constructor.prototype['_array_variable_type'] = {};
-    }
-    target.constructor.prototype['_array_variable_type'][key] = className;
-  }
-}
-
+import { ArrayDecorator } from '../decorator/arrayDecorator.dec';
 
 export class RawItem extends Model {
 

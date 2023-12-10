@@ -23,7 +23,7 @@ export class WarehouseComponent {
       {
         'name': 'Warehouse Management',
         'isLink': true,
-        'link': '/home/warehouse-management'
+        'link': '/home/inventory-management/warehouse-new'
       },
       {
         'name': 'Warehouse',
@@ -40,7 +40,7 @@ export class WarehouseComponent {
   }
 
   newWarehouse() {
-    
+    this.navCtrl.navigateByUrl('/home/inventory-management/warehouse-new');
   }
 
   // Table 

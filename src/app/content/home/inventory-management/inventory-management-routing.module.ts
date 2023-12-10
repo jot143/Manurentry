@@ -4,6 +4,7 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { NgModule } from '@angular/core';
 import { StoreComponent } from './store/store.component';
 import { WarehouseComponent } from './warehouse/warehouse.component';
+import { WarehouseNewComponent } from './warehouse/warehouse-new/warehouse-new.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'warehouse',
     component: WarehouseComponent
+  },
+  {
+    path: 'warehouse-new',
+    component: WarehouseNewComponent
   },
   {
     path: 'store',

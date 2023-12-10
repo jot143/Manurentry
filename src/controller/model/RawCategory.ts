@@ -1,17 +1,7 @@
 import { environment } from 'src/environments/environment';
 import { Media } from './Media';
 import { Model } from './Model';
-
-function ArrayDecorator(className: string) {
-  return function(target: any, key: any) {
-
-    if(!target.constructor.prototype['_array_variable_type']) {
-      target.constructor.prototype['_array_variable_type'] = {};
-    }
-    target.constructor.prototype['_array_variable_type'][key] = className;
-  }
-}
-
+import { ArrayDecorator } from '../decorator/arrayDecorator.dec';
 
 export class RawCategory extends Model {
 

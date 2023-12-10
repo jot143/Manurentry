@@ -1,16 +1,6 @@
+import { ArrayDecorator } from '../decorator/arrayDecorator.dec';
 import { Model } from './Model';
 import { RawItemVariantFeature } from './RawItemVariantFeature';
-
-function ArrayDecorator(className: string) {
-  return function(target: any, key: any) {
-
-    if(!target.constructor.prototype['_array_variable_type']) {
-      target.constructor.prototype['_array_variable_type'] = {};
-    }
-    target.constructor.prototype['_array_variable_type'][key] = className;
-  }
-}
-
 
 export class RawItemVariants extends Model {
 
