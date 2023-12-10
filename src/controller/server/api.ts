@@ -140,6 +140,44 @@ const API: any = {
       url: "/admin/raw-item/{{id}}",
     },
     //
+
+    //Warehouse
+    getWarehouses: {
+      requestType: "get",
+      url: "/admin/warehouse/index",
+    },
+    addWarehouse: {
+      requestType: "post",
+      url: "/admin/warehouse/create",
+    },
+    editWarehouse: {
+      requestType: "put",
+      url: "/admin/warehouse/{{id}}",
+    },
+    deleteWarehouse: {
+      requestType: "delete",
+      url: "/admin/warehouse/{{id}}",
+    },
+    //
+
+    //Store
+    getStores: {
+      requestType: "get",
+      url: "/admin/store/index",
+    },
+    addStore: {
+      requestType: "post",
+      url: "/admin/store/create",
+    },
+    editStore: {
+      requestType: "put",
+      url: "/admin/store/{{id}}",
+    },
+    deleteStore: {
+      requestType: "delete",
+      url: "/admin/store/{{id}}",
+    },
+    //
   },
 
   defaultDomain: () => environment.API_URL,

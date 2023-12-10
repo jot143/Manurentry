@@ -67,7 +67,10 @@ export class RequestService {
         };
 
         const errorHandlerDefault = (error: any) => {
-          if (error?.error?.status) {
+
+          if (error?.error?.status && error?.error?.message) {
+            this.toastr.error(error?.error?.message);
+          } else if(error?.error?.status && error?.error?.desc) {
             this.toastr.error(error?.error?.desc);
           } else {
             this.toastr.error('Something went wrong');

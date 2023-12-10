@@ -1,1 +1,55 @@
-<p>warehouse works!</p>
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row mb-1">
+            <app-breadcrumb class="col-12" [breadcrumb]="breadcrumb">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-danger btn-glow btn-block" style="width: 200px;"
+                        (click)="newWarehouse()">
+                        <i class="ficon feather ft-plus"></i>
+                        <span>New Warehouse</span>
+                    </button>
+                </div>
+            </app-breadcrumb>
+        </div>
+        <div class="content-body">
+            <ngx-datatable #table class="bootstrap row contacts-table" [rows]="service.warehouses | async" [columnMode]="'force'"
+                [headerHeight]="50" [footerHeight]="50" [rowHeight]="70" [limit]="5" [selected]="selected" [selectionType]="'checkbox'" (select)='onSelect($event)' fxFlex="auto" [perfectScrollbar]="config">
+
+                <ngx-datatable-column [flexGrow]="1" [minWidth]="30" [maxWidth]="50">
+                    <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                        let-selectFn="selectFn">
+                        <span class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="selectAll"
+                                [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                            <label class="custom-control-label" for="selectAll"></label>
+                        </span>
+                    </ng-template>
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                        let-onCheckboxChangeFn="onCheckboxChangeFn" let-isSelected="isSelected">
+                        <div class="custom-control custom-checkbox _center">
+                            <input type="checkbox" class="custom-control-input" id="select{{rowIndex}}"
+                                [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                            <label class="custom-control-label" for="select{{rowIndex}}"></label>
+                        </div>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Name" [minWidth]="140" [maxWidth]="300">
+                    <ng-template ngx-datatable-cell-template let-row="row">
+                        {{row.name}} ({{row.unit}})
+                    </ng-template>
+                </ngx-datatable-column>
+               
+                <ngx-datatable-column name="Actions" [minWidth]="100" [maxWidth]="140">
+                    <ng-template ngx-datatable-cell-template let-row="row">
+                        <a [routerLink]="" class="primary edit mr-1 mrless"
+                            (click)="edit(row)"><i class="la la-pencil"></i>
+                        </a>
+                        <a class="danger delete mr-1 mrless"><i class="la la-trash-o" (click)="deleteRow(row)"></i></a>
+                    </ng-template>
+
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </div>
+</div>
