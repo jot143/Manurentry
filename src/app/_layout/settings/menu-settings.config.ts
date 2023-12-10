@@ -68,6 +68,27 @@ export const MenuSettingsConfig: MenuConfig = {
           ]
         }
       },
+      {
+        title: 'Inventory Mgt.',
+        icon: 'la-cart-plus',
+        page: 'null',
+        submenu: {
+          items: [
+            {
+              title: 'Inventory',
+              page: '/home/inventory-management/inventory'
+            },
+            {
+              title: 'Warehouse',
+              page: '/home/inventory-management/warehouse'
+            },
+            {
+              title: 'Store',
+              page: '/home/inventory-management/store'
+            }
+          ]
+        }
+      }
       // {
       //   title: 'Changelog',
       //   icon: 'la-file',
