@@ -42,7 +42,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
           self.layout = 'horizontal';
         }
 
-        console.log(self.layout);
         this.refreshView();
       });
   }

@@ -35,15 +35,17 @@ export class AppService {
     private zone: NgZone,
     private toastr: ToastrService,
     private navCtrl: NavCtrlService,
-    private router: Router,
-    private route: ActivatedRoute
   ) {
-    this.subscribeRoute();
+    
   }
   
 
   // sidebar function
   initHome() {
+
+    this.routeObservable.subscribe((value) => {
+      console.log(value)
+    })
 
     this.registerDeviceOnServer();
 
@@ -52,20 +54,6 @@ export class AppService {
     ]).finally(() => {
       this.emitChangeDetect();
     })
-  }
-
-  subscribeRoute() {
-
-
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      console.log(event, this.router.routerState.snapshot)
-      this.currentModule = this.route.snapshot.paramMap.get('module');
-      this.currentCategory = this.route.snapshot.paramMap.get('category');
-      console.log('Route changed:', this.currentModule, this.currentCategory);
-    });
-
   }
 
   emitChangeDetect() {

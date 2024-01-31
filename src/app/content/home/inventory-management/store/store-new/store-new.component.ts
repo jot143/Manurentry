@@ -48,8 +48,6 @@ export class StoreNewComponent {
   }
 
   save() {
-
-    console.log(this.form.value);
     
     this.form.markAllAsTouched();
     if (this.form.invalid) {

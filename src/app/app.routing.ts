@@ -34,35 +34,36 @@ const appRoutes: Routes = [
         path: ':module',
         component: SportsComponent
       },
+      {
+        path: ':module/:category',
+        component: PrivateLayoutComponent,
+        children: [
+          { 
+            path: '', 
+            component: HomeComponent
+          },
+          { 
+            path: 'item-management', 
+            loadChildren: () => import('./content/home/item-management/item-management.module').then(m => m.ItemManagementModule)
+          },
+          { 
+            path: 'raw-item-management', 
+            loadChildren: () => import('./content/home/raw-item-management/raw-item-management.module').then(m => m.RawItemManagementModule)
+          },
+          { 
+            path: 'inventory-management', 
+            loadChildren: () => import('./content/home/inventory-management/inventory-management.module').then(m => m.InventoryManagementModule)
+          },
+          { 
+            path: 'logout', 
+            component: LoginComponent
+          },
+        ],
+        canActivate: [AuthGuard],
+      },
     ]
   },
-  {
-    path: 'home/:module/:category',
-    component: PrivateLayoutComponent,
-    children: [
-      { 
-        path: '', 
-        component: HomeComponent
-      },
-      { 
-        path: 'item-management', 
-        loadChildren: () => import('./content/home/item-management/item-management.module').then(m => m.ItemManagementModule)
-      },
-      { 
-        path: 'raw-item-management', 
-        loadChildren: () => import('./content/home/raw-item-management/raw-item-management.module').then(m => m.RawItemManagementModule)
-      },
-      { 
-        path: 'inventory-management', 
-        loadChildren: () => import('./content/home/inventory-management/inventory-management.module').then(m => m.InventoryManagementModule)
-      },
-      { 
-        path: 'logout', 
-        component: LoginComponent
-      },
-    ],
-    canActivate: [AuthGuard],
-  },
+ 
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
 ];

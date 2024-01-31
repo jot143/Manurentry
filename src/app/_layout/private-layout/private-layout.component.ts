@@ -4,9 +4,10 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { DeviceDetectorService } from '../../_services/device-detector.service';
 import { AppConstants } from '../../_helpers/app.constants';
-import { Router, NavigationStart, NavigationEnd, Event, NavigationError } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, Event, NavigationError, ActivatedRoute } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { NavbarService } from 'src/app/_services/navbar.service';
+import { AppService } from 'src/controller/service/app.service';
 
 @Component({
   selector: 'app-private-layout',
@@ -22,6 +23,8 @@ export class PrivateLayoutComponent implements OnInit {
   deviceInfo = null;
 
   constructor(private renderer: Renderer2,
+    private appService: AppService,
+    private route: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
     private navbarService: NavbarService,
@@ -69,6 +72,9 @@ export class PrivateLayoutComponent implements OnInit {
   ngOnInit() {
     const _self = this;
     this.renderer.removeClass(document.body, 'bg-full-screen-image');
+
+    this.appService.routeObservable.next(this.route.snapshot.params);
+  
 
     // Subscribe to config changes
     this._themeSettingsService.config

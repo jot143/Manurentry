@@ -1,9 +1,6 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
-import { DeviceDetectorService } from 'src/app/_services/device-detector.service';
-import { NavbarService } from 'src/app/_services/navbar.service';
-import { ThemeSettingsService } from '../settings/theme-settings.service';
+import { Component, Renderer2 } from '@angular/core';
+
+import { AppService } from 'src/controller/service/app.service';
 
 @Component({
   selector: 'app-view-layout',
@@ -13,15 +10,12 @@ import { ThemeSettingsService } from '../settings/theme-settings.service';
 export class ViewLayoutComponent {
 
   constructor(private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document,
-    private router: Router,
-    private navbarService: NavbarService,
-    private _themeSettingsService: ThemeSettingsService,
-    private deviceService: DeviceDetectorService) {
+    private appService: AppService) {
 
   }
 
   ngOnInit() {
+    this.appService.initHome();
     this.renderer.removeClass(document.body, 'bg-full-screen-image');
     this.renderer.addClass(document.body, 'fixed-navbar');
   }

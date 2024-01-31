@@ -59,8 +59,6 @@ export class WarehouseNewComponent {
   }
 
   save() {
-
-    console.log(this.form.value);
     
     this.form.markAllAsTouched();
     if (this.form.invalid) {
