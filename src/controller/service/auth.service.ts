@@ -60,9 +60,9 @@ export class AuthService {
         this.setLoggedIn(value.data.user);
         this.navCtrl.goTo('/home', {}, 'root');
       } else if (value.status == 'FAILED') {
-        this.toastr.error(value.message, "Login");
+        this.toastr.error(value.message);
       } else {
-        this.toastr.error("Something went wrong", "Login");
+        this.toastr.error("Something went wrong");
       }
     };
 
@@ -77,9 +77,9 @@ export class AuthService {
         this.navCtrl.goTo('/home', {}, 'root');
         this.toastr.success(value.message);
       } else if (value.status == 'FAILED') {
-        this.toastr.error(value.message, "Register");
+        this.toastr.error(value.message);
       } else {
-        this.toastr.error("Something went wrong", "Register");
+        this.toastr.error("Something went wrong");
       }
     };
 

@@ -1,14 +1,14 @@
 import { ActionPerformed, PushNotificationSchema } from "@capacitor/push-notifications";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { ApplicationRef, Injectable, NgZone } from "@angular/core";
+import { BehaviorSubject, Subject, filter } from "rxjs";
 
 import { App } from '@capacitor/app';
 import { AuthService } from "./auth.service";
 import { NavCtrlService } from "../utility/nav-ctrl.service";
 import { Platform } from "@ionic/angular";
 import { PushNotificationService } from "./push-notification.service";
-import { RedeemService } from "./redeem.service";
 import { RequestService } from "../utility/request.service";
-import { Subject } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 
 @Injectable({
@@ -18,17 +18,29 @@ export class AppService {
 
   detectChanges = new Subject();
 
+  sports = ['cricket', 'football', 'volley-ball', 'hand-ball', 'basket-ball', 'throw-ball', 'hockey', 'sports-wear', 'sports-shoe', 'fitness', 'boxing'];
+  modules = ['inventory'];
+
+  currentModule = null;
+  currentCategory = null;
+
+  routeObservable = new BehaviorSubject(undefined);
+
   constructor(
     private request: RequestService,
     private auth: AuthService,
     private platform: Platform,
     private pushNotification: PushNotificationService,
-    private redeemService: RedeemService,
     private applicationRef: ApplicationRef,
     private zone: NgZone,
     private toastr: ToastrService,
-    private navCtrl: NavCtrlService
-  ) { }
+    private navCtrl: NavCtrlService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.subscribeRoute();
+  }
+  
 
   // sidebar function
   initHome() {
@@ -37,10 +49,23 @@ export class AppService {
 
     Promise.all([
       this.auth.loadCurrentUser(true),
-      this.redeemService.getRedeemHistory()
     ]).finally(() => {
       this.emitChangeDetect();
     })
+  }
+
+  subscribeRoute() {
+
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      console.log(event, this.router.routerState.snapshot)
+      this.currentModule = this.route.snapshot.paramMap.get('module');
+      this.currentCategory = this.route.snapshot.paramMap.get('category');
+      console.log('Route changed:', this.currentModule, this.currentCategory);
+    });
+
   }
 
   emitChangeDetect() {
@@ -74,9 +99,9 @@ export class AppService {
       if (notificationBar.actionId === 'tap') {
         const notification = notificationBar.notification;
         this.zone.run(() => {
-            if (notification.data?.url && notification.data?.url !== '') {
-              this.navCtrl.goTo(notification.data?.url);
-            }
+          if (notification.data?.url && notification.data?.url !== '') {
+            this.navCtrl.goTo(notification.data?.url);
+          }
         });
       }
 

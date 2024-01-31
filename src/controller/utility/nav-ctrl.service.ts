@@ -1,8 +1,7 @@
+import { Inject, Injectable } from '@angular/core';
 import { ModalController, NavController, PopoverController } from '@ionic/angular';
 
 import { ActivatedRoute } from '@angular/router';
-import { Inject, Injectable } from '@angular/core';
-import { TuiDialogService } from '@taiga-ui/core';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +16,7 @@ export class NavCtrlService {
     private modalCtrl: ModalController,
     public navCtrl: NavController,
     public popoverCtrl: PopoverController,
-    private route: ActivatedRoute,
-    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
+    private route: ActivatedRoute
   ) { }
 
   params() {
@@ -95,15 +93,5 @@ export class NavCtrlService {
 
   async closePopup(data: any = null) {
     await this.modalCtrl.dismiss(data);
-  }
-
-  showDialogWithCustomButton(template: any, label = 'Dialog', button: any): void {
-    this.dialogs
-      .open(template, {
-        label,
-        size: 's',
-        data: { button},
-      })
-      .subscribe();
   }
 }

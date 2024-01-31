@@ -17,3 +17,11 @@
       margin-left: 150px !important;
   }
 }
+
+.breadcrumb-new {
+  border-bottom: 1px solid #E4E5EC;
+}
+
+.breadcrumb-new .content-header-title {
+	padding: 15px 24px 15px 0;
+}

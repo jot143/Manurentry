@@ -2,10 +2,14 @@
 
 import { AuthGuard } from './_guards/auth.guard';
 import { ChangelogComponent } from './content/changelog/changelog.component';
+import { FullLayoutComponent } from './_layout/full-layout/full-layout.component';
 import { HomeComponent } from './content/home/dashboard/home.component';
 import { LoginComponent } from './login';
+import { ModuleComponent } from './content/home/module/module.component';
 import { PrivateLayoutComponent } from './_layout/private-layout/private-layout.component';
 import { PublicLayoutComponent } from './_layout/public-layout/public-layout.component';
+import { SportsComponent } from './content/home/sports/sports.component';
+import { ViewLayoutComponent } from './_layout/view-layout/view-layout.component';
 
 const appRoutes: Routes = [
   // Public layout
@@ -20,6 +24,20 @@ const appRoutes: Routes = [
   // Private layout
   {
     path: 'home',
+    component: ViewLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: ModuleComponent
+      },
+      {
+        path: ':module',
+        component: SportsComponent
+      },
+    ]
+  },
+  {
+    path: 'home/:module/:category',
     component: PrivateLayoutComponent,
     children: [
       { 

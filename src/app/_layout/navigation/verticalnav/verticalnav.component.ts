@@ -81,16 +81,19 @@ export class VerticalnavComponent implements OnInit {
   }
 
   resetMainMenu() {
-    const nodes = this.document.getElementById('main-menu-navigation').childNodes;
-    for (let i = 0; i < nodes.length; i++) {
-      this.resetCollapseMenu(nodes[i]);
+    const nodes = this.document.getElementById('main-menu-navigation')?.childNodes;
+    if(nodes) {
+      for (let i = 0; i < nodes.length; i++) {
+        this.resetCollapseMenu(nodes[i]);
+      }
+      for (let i = 0; i < this._menuSettingsConfig.menu.items.length; i++) {
+        this._menuSettingsConfig.menu.items[i]['isSelected'] = false;
+        this._menuSettingsConfig.menu.items[i]['hover'] = false;
+        this._menuSettingsConfig.menu.items[i]['isOpen'] = false;
+        this.resetSubmenuItems(this._menuSettingsConfig.menu.items[i]);
+      }
     }
-    for (let i = 0; i < this._menuSettingsConfig.menu.items.length; i++) {
-      this._menuSettingsConfig.menu.items[i]['isSelected'] = false;
-      this._menuSettingsConfig.menu.items[i]['hover'] = false;
-      this._menuSettingsConfig.menu.items[i]['isOpen'] = false;
-      this.resetSubmenuItems(this._menuSettingsConfig.menu.items[i]);
-    }
+    
   }
 
   resetCollapseMenu(element) {

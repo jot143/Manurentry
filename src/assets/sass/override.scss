@@ -44,3 +44,12 @@ app-select-category {
 app-select-raw-category {
   position: relative;
 }
+
+.header-navbar {
+	padding: 0px;
+	min-height: 5rem;
+	font-family: "Quicksand", Georgia, "Times New Roman", Times, serif;
+	transition: 300ms ease all;
+  max-height: 71px;
+  overflow: hidden;
+}

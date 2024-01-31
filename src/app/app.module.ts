@@ -26,10 +26,13 @@ import { FullLayoutNavbarComponent } from './_layout/header/full-layout-navbar/f
 import { HeaderComponent } from './_layout/header/header.component';
 import { HorizontalComponent as HeaderHorizontalComponent } from './_layout/header/horizontal/horizontal.component';
 import { VerticalComponent as HeaderVerticalComponent } from './_layout/header/vertical/vertical.component';
+import { HomeComponent } from './content/home/dashboard/home.component';
 import { HorizontalCustomizerComponent } from './_layout/customizer/horizontal-customizer/horizontal-customizer.component';
+import { IonicModule } from '@ionic/angular';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoginComponent } from './login';
 import { MenuSettingsConfig } from './_layout/settings/menu-settings.config';
+import { ModuleComponent } from './content/home/module/module.component';
 import { NavbarService } from './_services/navbar.service';
 import { NgModule } from '@angular/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -40,11 +43,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SettingsModule } from './_layout/settings/settings.module';
 import { ThemeSettingsConfig } from './_layout/settings/theme-settings.config';
+import { ToastrModule } from 'ngx-toastr';
 import { VerticalnavComponent } from './_layout/navigation/verticalnav/verticalnav.component';
+import { ViewLayoutComponent } from './_layout/view-layout/view-layout.component';
 import { environment } from '../environments/environment';
 import { routing } from './app.routing';
-import { HomeComponent } from './content/home/dashboard/home.component';
-import { ToastrModule } from 'ngx-toastr';
+import { SportsComponent } from './content/home/sports/sports.component';
 
 // Routing
 // Components
@@ -54,6 +58,7 @@ import { ToastrModule } from 'ngx-toastr';
     imports: [
         BrowserModule,
         BrowserAnimationsModule, // required animations module
+        IonicModule.forRoot(),
         ToastrModule.forRoot(), // ToastrModule added
         ReactiveFormsModule,
         HttpClientModule,
@@ -93,6 +98,9 @@ import { ToastrModule } from 'ngx-toastr';
         BlockTemplateComponent,
         FullLayoutComponent,
         HomeComponent,
+        ModuleComponent,
+        ViewLayoutComponent,
+        SportsComponent,
       ],
     providers: [
         AuthGuard,

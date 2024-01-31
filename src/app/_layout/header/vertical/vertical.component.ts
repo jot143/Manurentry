@@ -138,13 +138,13 @@ export class VerticalComponent implements OnInit, AfterViewInit {
       this.selectedHeaderNavBarClass = this._themeSettingsConfig.color;
       this.selectedNavBarHeaderClass = this._themeSettingsConfig.color;
     }
-    if (menuColorElement) {
+    if (menuColorElement && menuColorElement?.item(0)) {
       if (this._themeSettingsConfig.menuColor === 'menu-dark') {
-        this._renderer.removeClass(menuColorElement.item(0), 'menu-light');
-        this._renderer.addClass(menuColorElement.item(0), 'menu-dark');
-      } else if (this._themeSettingsConfig.menuColor === 'menu-light') {
-        this._renderer.removeClass(menuColorElement.item(0), 'menu-dark');
-        this._renderer.addClass(menuColorElement.item(0), 'menu-light');
+        this?._renderer?.removeClass(menuColorElement?.item(0), 'menu-light');
+        this?._renderer?.addClass(menuColorElement?.item(0), 'menu-dark');
+      } else if (this?._themeSettingsConfig?.menuColor === 'menu-light') {
+        this?._renderer?.removeClass(menuColorElement?.item(0), 'menu-dark');
+        this?._renderer?.addClass(menuColorElement?.item(0), 'menu-light');
       }
     }
 
@@ -168,7 +168,7 @@ export class VerticalComponent implements OnInit, AfterViewInit {
       }
     }
 
-    if (navigationElement) {
+    if (navigationElement && navigationElement?.item(0)) {
       if (this._themeSettingsConfig.navigation === 'menu-native-scroll') {
         this._renderer.addClass(navigationElement.item(0), 'menu-native-scroll');
       } else if (this._themeSettingsConfig.navigation === 'menu-icon-right') {
@@ -184,7 +184,7 @@ export class VerticalComponent implements OnInit, AfterViewInit {
       }
     }
 
-    if (navbarElement) {
+    if (navbarElement && navbarElement?.item(0)) {
       if (this._themeSettingsConfig.menu === 'navbar-static-top') {
         this._renderer.addClass(navbarElement.item(0), 'navbar-static-top');
         this._renderer.addClass(navigationElement.item(0), 'menu-static');

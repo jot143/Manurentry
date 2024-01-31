@@ -1,0 +1,16 @@
+<app-header></app-header>
+
+<app-breadcrumb [breadcrumb]="breadcrumb"></app-breadcrumb>
+
+<div class="container-fluid py-2">
+    <div class="row">
+        <div class="col-md-2" *ngFor="let module of appService.modules">
+            <div class="card" (click)="goto(module)">
+                <img class="card-img-top" src="../../../../assets/icons/modules/{{module}}.png" alt="{{module}} icon">
+                <div class="card-body">
+                    <h5 class="card-title">{{module}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

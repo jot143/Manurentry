@@ -1,7 +1,7 @@
 ﻿﻿import { Component, Inject, OnInit, Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LoadingBarService } from '@ngx-loading-bar/core';
-import { NavigationStart, RouteConfigLoadStart, RouteConfigLoadEnd, NavigationEnd, NavigationCancel } from '@angular/router';
+import { NavigationStart, RouteConfigLoadStart, RouteConfigLoadEnd, NavigationEnd, NavigationCancel, ActivatedRoute } from '@angular/router';
 import { DeviceDetectorService } from './_services/device-detector.service';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { ThemeSettingsService } from './_layout/settings/theme-settings.service'
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import { AppService } from 'src/controller/service/app.service';
 
 @Component({
   selector: 'app-main',
@@ -32,11 +33,14 @@ export class AppComponent implements OnInit {
     private deviceService: DeviceDetectorService,
     public _menuSettingsService: MenuSettingsService,
     public _themeSettingsService: ThemeSettingsService,
-    private titleService: Title
+    private titleService: Title,
+    private route: ActivatedRoute, private appService: AppService
   ) {
     this._unsubscribeAll = new Subject();
     this._unsubscribeAllMenu = new Subject();
     this.setTitle();
+
+    this.route.params.subscribe(params => this.appService.routeObservable.next(params))
   }
   
   ngOnInit() {
