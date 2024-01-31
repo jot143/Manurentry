@@ -35,7 +35,7 @@ const appRoutes: Routes = [
         component: SportsComponent
       },
       {
-        path: ':module/:category',
+        path: 'inventory/:category',
         component: PrivateLayoutComponent,
         children: [
           { 
