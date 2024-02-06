@@ -23,13 +23,13 @@ export class ItemService {
     this.requestService.send("editItem", data, success);
   }
 
-  getAll() {
+  getAll(data = {}) {
     const success = (value) => {
       if ((value.status = "OK")) {
         this.items.next(Item.createFromArray(value.data));
       }
     };
-    this.requestService.send("getItems", {}, success);
+    this.requestService.send("getItems", data, success);
   }
 
   deleteItem(data: Partial<{ id: number }>, success: (value: any) => void) {

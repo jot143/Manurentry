@@ -40,7 +40,8 @@ const appRoutes: Routes = [
         children: [
           { 
             path: '', 
-            component: HomeComponent
+            redirectTo: 'item-management',
+            pathMatch: 'full'
           },
           { 
             path: 'item-management', 

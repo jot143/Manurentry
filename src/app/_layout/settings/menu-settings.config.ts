@@ -21,11 +21,11 @@ export interface MenuConfig {
 export const MenuSettingsConfig: MenuConfig = {
   menu: {
     items: [
-      {
-        title: 'Home',
-        icon: 'la-home',
-        page: '/home'
-      },
+      // {
+      //   title: 'Home',
+      //   icon: 'la-home',
+      //   page: '/home'
+      // },
       {
         title: 'Item Management',
         icon: 'la-cart-plus',

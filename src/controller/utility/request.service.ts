@@ -48,9 +48,13 @@ export class RequestService {
               API.endpoints[requestName].domain + API.endpoints[requestName].url;
           }
 
-          for (const key in data) {
-            const variable = '{{' + key + '}}';
-            tempUrl = tempUrl.replace(variable, data[key]);
+          let paramString = '';
+          for (const key in data.params) {
+            paramString += '&' + key + '=' + data.params[key];
+          }
+
+          if(paramString) {
+            tempUrl += '?' + paramString.substring(1, paramString.length);
           }
           return tempUrl;
         };

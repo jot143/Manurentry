@@ -21,9 +21,6 @@ export class AppService {
   sports = ['cricket', 'football', 'volley-ball', 'hand-ball', 'basket-ball', 'throw-ball', 'hockey', 'sports-wear', 'sports-shoe', 'fitness', 'boxing'];
   modules = ['inventory'];
 
-  currentModule = null;
-  currentCategory = null;
-
   routeObservable = new BehaviorSubject(undefined);
 
   constructor(
